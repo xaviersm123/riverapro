@@ -3,13 +3,25 @@ import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, Menu, X } from 'lucide-react';
 
-interface HeaderProps {
-  isScrolled: boolean;
-}
-
-const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
+const Header: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   // Close mobile menu when window is resized to desktop size
   useEffect(() => {
     const handleResize = () => {
@@ -17,7 +29,6 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
         setIsMenuOpen(false);
       }
     };
-    
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -29,7 +40,6 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -44,15 +54,15 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
   ];
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="flex items-center gap-2 text-primary-600 font-display font-bold text-xl"
         >
           <Home className="h-6 w-6" />
@@ -65,9 +75,9 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             <NavLink
               key={item.path}
               to={item.path}
-              className={({ isActive }) => 
-                `text-sm font-medium transition-colors hover:text-primary-600 ${
-                  isActive ? 'text-primary-600' : 'text-secondary-700'
+              className={({ isActive }) =>
+                `text-base font-semibold transition-colors ${
+                  isActive ? 'text-primary-600' : isScrolled ? 'text-primary-600 hover:text-orange-500' : 'text-white hover:text-orange-500'
                 }`
               }
               end={item.path === '/'}
@@ -75,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
               {item.name}
             </NavLink>
           ))}
-          <Link to="/quote" className="btn-primary">
+          <Link to="/quote" className="btn-primary text-white">
             Get a Quote
           </Link>
         </nav>
@@ -105,8 +115,8 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
                     <NavLink
                       key={item.path}
                       to={item.path}
-                      className={({ isActive }) => 
-                        `text-lg font-medium transition-colors hover:text-primary-600 ${
+                      className={({ isActive }) =>
+                        `text-lg font-semibold transition-colors hover:text-primary-600 ${
                           isActive ? 'text-primary-600' : 'text-secondary-700'
                         }`
                       }
@@ -116,9 +126,9 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
                       {item.name}
                     </NavLink>
                   ))}
-                  <Link 
-                    to="/quote" 
-                    className="btn-primary w-full text-center mt-4"
+                  <Link
+                    to="/quote"
+                    className="btn-primary w-full text-center mt-4 text-white"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Get a Quote

@@ -3,15 +3,22 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
+const heroImage = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80&fm=webp';
+
 const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" 
-          alt="Modern architecture" 
+        <img
+          src={heroImage}
+          alt="Modern architectural home exterior in Atlanta with sleek design and large windows"
           className="w-full h-full object-cover"
+          width={2070}
+          height={1380}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async" // Asynchronous decoding to reduce main-thread work
         />
         <div className="absolute inset-0 bg-gradient-to-r from-secondary-900/90 to-secondary-900/70"></div>
       </div>
@@ -19,7 +26,7 @@ const Hero: React.FC = () => {
       {/* Content */}
       <div className="container-custom relative z-10 pt-24 pb-16">
         <div className="max-w-3xl">
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -27,8 +34,8 @@ const Hero: React.FC = () => {
           >
             Crafting Exceptional Spaces With Precision
           </motion.h1>
-          
-          <motion.p 
+
+          <motion.p
             className="text-xl text-secondary-200 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -36,8 +43,8 @@ const Hero: React.FC = () => {
           >
             From concept to completion, we bring your vision to life with unparalleled craftsmanship and attention to detail.
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             className="flex flex-col sm:flex-row gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -54,8 +61,8 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div 
+      {/* Scroll Indicator (Simplified) */}
+      <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -63,13 +70,12 @@ const Hero: React.FC = () => {
       >
         <div className="flex flex-col items-center">
           <span className="text-white text-sm mb-2">Scroll Down</span>
-          <motion.div 
+          <motion.div
             className="w-6 h-10 border-2 border-white rounded-full flex justify-center p-1"
-            initial={{ y: 0 }}
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
           >
-            <motion.div className="w-1 h-2 bg-white rounded-full"></motion.div>
+            <div className="w-1 h-2 bg-white rounded-full"></div>
           </motion.div>
         </div>
       </motion.div>

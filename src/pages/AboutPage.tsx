@@ -1,216 +1,302 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Award, Users, Clock, Briefcase, CheckCircle } from 'lucide-react';
+import { Award, Briefcase, Clock, CheckCircle, Hammer, PaintBucket, Wrench, Home, Leaf, Users, ArrowRight } from 'lucide-react';
 import PageTransition from '../components/ui/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import CTA from '../components/home/CTA';
 
+const fadeSlide = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.5 }
+  })
+};
+
 const AboutPage: React.FC = () => {
   const stats = [
     { icon: Award, value: '20+', label: 'Years Experience' },
-    { icon: Users, value: '500+', label: 'Happy Clients' },
+    { icon: Home, value: '500+', label: 'Happy Clients' },
     { icon: Briefcase, value: '750+', label: 'Projects Completed' },
-    { icon: Clock, value: '98%', label: 'On-Time Completion' }
+    { icon: Clock, value: '98%', label: 'On-Time Completion' },
   ];
 
   const values = [
     {
       title: 'Quality Craftsmanship',
-      description: 'We take pride in our work and are committed to delivering the highest quality in every project we undertake.'
+      description: 'I take pride in my work, delivering the highest quality in every project with precision and care.',
+      icon: Hammer,
     },
     {
       title: 'Integrity & Transparency',
-      description: 'We operate with honesty and transparency, ensuring clear communication and fair pricing throughout the process.'
+      description: 'I believe in honesty, offering clear communication and fair pricing throughout your project.',
+      icon: CheckCircle,
     },
     {
       title: 'Client-Centered Approach',
-      description: 'Your vision and satisfaction are our top priorities. We listen carefully and tailor our services to meet your specific needs.'
+      description: 'Your vision is my priority—I listen carefully and tailor my services to your unique needs.',
+      icon: Users,
     },
     {
       title: 'Innovation & Expertise',
-      description: 'We stay at the forefront of industry trends and technologies to bring innovative solutions to your projects.'
+      description: 'I stay ahead of industry trends, bringing innovative solutions to every project.',
+      icon: Wrench,
     },
     {
       title: 'Sustainability',
-      description: 'We are committed to environmentally responsible practices and sustainable building methods.'
+      description: 'I use environmentally responsible practices to ensure a sustainable future.',
+      icon: Leaf,
     },
     {
       title: 'Reliability',
-      description: 'We deliver on our promises, completing projects on time and within budget without compromising on quality.'
-    }
+      description: 'I deliver on time and within budget, never compromising on quality.',
+      icon: Clock,
+    },
   ];
 
-  const team = [
+  const milestones = [
     {
-      name: 'John Anderson',
-      role: 'Founder & CEO',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      year: '2005',
+      title: 'The Beginning',
+      description: 'Started as a small residential renovation contractor with a passion for quality craftsmanship.',
     },
     {
-      name: 'Maria Rodriguez',
-      role: 'Lead Architect',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80'
+      year: '2010',
+      title: 'First Major Project',
+      description: 'Completed my first large-scale residential project, earning recognition for excellence.',
     },
     {
-      name: 'David Chen',
-      role: 'Project Manager',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      year: '2015',
+      title: 'Expanded Services',
+      description: 'Began offering commercial construction and specialized renovation services.',
     },
     {
-      name: 'Sarah Johnson',
-      role: 'Interior Designer',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80'
-    }
+      year: '2020',
+      title: 'Award-Winning Work',
+      description: 'Received an industry award for a luxury home renovation project.',
+    },
+    {
+      year: '2025',
+      title: 'Today',
+      description: 'A trusted contractor with 750+ completed projects and a 98% on-time completion rate.',
+    },
+  ];
+
+  const whyChooseUs = [
+    {
+      title: 'Personalized Service',
+      description: 'As a solo contractor, I provide hands-on, personalized service to every client.',
+      icon: Home,
+    },
+    {
+      title: 'Proven Expertise',
+      description: 'With over 20 years of experience, I bring unmatched skill to every project.',
+      icon: Award,
+    },
+    {
+      title: 'Attention to Detail',
+      description: 'I focus on the little things, ensuring every project is flawless.',
+      icon: PaintBucket,
+    },
   ];
 
   return (
     <PageTransition>
       <Helmet>
         <title>About Us | Elite Contractor</title>
-        <meta name="description" content="Learn about Elite Contractor's history, values, and the expert team behind our premium construction services." />
+        <meta
+          name="description"
+          content="Learn about Elite Contractor, a trusted Atlanta contractor with over 20 years of experience in premium construction and renovation services."
+        />
+        <meta property="og:title" content="About Us | Elite Contractor" />
+        <meta
+          property="og:description"
+          content="Learn about Elite Contractor, a trusted Atlanta contractor with over 20 years of experience in premium construction and renovation services."
+        />
+        <meta property="og:image" content="https://elitecontractor.com/og-image.jpg" />
+        <meta property="og:url" content="https://elitecontractor.com/about" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://elitecontractor.com/about" />
+        <link
+          rel="preload"
+          href="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80&fm=webp"
+          as="image"
+        />
+        <link rel="preconnect" href="https://images.unsplash.com" />
       </Helmet>
-      
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-secondary-900 text-white">
+
+      {/* Hero Section with Parallax Background */}
+      <section className="relative min-h-[80vh] flex items-center justify-center text-white">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80&fm=webp')",
+          }}
+        >
+          <div className="absolute inset-0 bg-secondary-900/70"></div>
+        </div>
+        <div className="container-custom relative z-10 text-center">
+          <motion.h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            variants={fadeSlide}
+            initial="hidden"
+            whileInView="visible"
+            custom={0}
+          >
+            About Elite Contractor
+          </motion.h1>
+          <motion.p
+            className="text-xl text-secondary-200 mb-8 max-w-2xl mx-auto"
+            variants={fadeSlide}
+            initial="hidden"
+            whileInView="visible"
+            custom={1}
+          >
+            Building excellence through craftsmanship, innovation, and unwavering commitment to quality since 2005.
+          </motion.p>
+          <motion.div
+            variants={fadeSlide}
+            initial="hidden"
+            whileInView="visible"
+            custom={2}
+          >
+            <a href="/contact" className="btn-primary inline-flex items-center">
+              Get in Touch
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Story with Timeline */}
+      <section className="section bg-gray-50">
         <div className="container-custom">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Elite Contractor</h1>
-            <p className="text-xl text-secondary-200">
-              Building excellence through craftsmanship, innovation, and unwavering commitment to quality since 2005.
-            </p>
+          <SectionHeading
+            title="Our Journey"
+            subtitle="From humble beginnings to a trusted contractor—here’s how we built Elite Contractor over the years."
+            centered
+          />
+          <div className="relative max-w-3xl mx-auto">
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-primary-200 h-full hidden md:block"></div>
+            {milestones.map((milestone, index) => (
+              <motion.div
+                key={index}
+                variants={fadeSlide}
+                initial="hidden"
+                whileInView="visible"
+                custom={index}
+                className={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} mb-12`}
+              >
+                <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
+                  <div className="bg-white p-6 rounded-lg shadow-md">
+                    <motion.h3 className="text-xl font-bold text-primary-700 mb-2">{milestone.year}</motion.h3>
+                    <motion.h4 className="text-lg font-semibold mb-2">{milestone.title}</motion.h4>
+                    <motion.p className="text-secondary-600">{milestone.description}</motion.p>
+                  </div>
+                </div>
+                <div className="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-primary-600 text-white absolute left-1/2 transform -translate-x-1/2">
+                  <div className="w-4 h-4 rounded-full bg-white"></div>
+                </div>
+                <div className="md:w-1/2"></div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
-      
-      {/* Our Story */}
-      <section className="section">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="rounded-lg overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Our story" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="section-title">Our Story</h2>
-              <p className="text-secondary-600 mb-6">
-                Founded in 2005 by John Anderson, Elite Contractor began as a small residential renovation company with a big vision: to transform the construction industry by prioritizing quality, integrity, and client satisfaction above all else.
-              </p>
-              <p className="text-secondary-600 mb-6">
-                Over the years, we've grown from a team of three dedicated professionals to a full-service construction company with over 50 experts across various specialties. Despite our growth, we've maintained our commitment to personalized service and exceptional craftsmanship.
-              </p>
-              <p className="text-secondary-600">
-                Today, Elite Contractor is recognized as one of the leading construction companies in the region, with a portfolio of award-winning projects spanning residential, commercial, and specialized construction. Our success is built on the relationships we've developed with our clients, many of whom return to us for multiple projects over the years.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Stats */}
+
+      {/* Stats with Animated Counters */}
       <section className="py-16 bg-primary-600 text-white">
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                variants={fadeSlide}
+                initial="hidden"
+                whileInView="visible"
+                custom={index}
                 className="text-center"
               >
                 <div className="inline-flex items-center justify-center p-3 bg-primary-500 rounded-full mb-4">
                   <stat.icon className="h-6 w-6" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold mb-2">{stat.value}</div>
+                <motion.div
+                  className="text-3xl md:text-4xl font-bold mb-2"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 1 }}
+                >
+                  {stat.value}
+                </motion.div>
                 <div className="text-primary-100">{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-      
-      {/* Our Values */}
+
+      {/* Our Core Values with Enhanced Design */}
       <section className="section bg-secondary-50">
         <div className="container-custom">
           <SectionHeading
             title="Our Core Values"
-            subtitle="These principles guide everything we do and define who we are as a company."
+            subtitle="These principles guide every project we undertake and define our approach as a contractor."
             centered
           />
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-lg shadow-md"
+                variants={fadeSlide}
+                initial="hidden"
+                whileInView="visible"
+                custom={index}
+                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="flex items-start mb-4">
-                  <CheckCircle className="h-6 w-6 text-primary-600 mr-3 mt-1" />
-                  <h3 className="text-xl font-bold">{value.title}</h3>
+                  <value.icon className="h-8 w-8 text-primary-600 mr-3 mt-1 animate-pulse" />
+                  <h3 className="text-xl font-bold text-primary-800">{value.title}</h3>
                 </div>
-                <p className="text-secondary-600">{value.description}</p>
+                <motion.p className="text-secondary-600">{value.description}</motion.p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-      
-      {/* Our Team */}
-      <section className="section">
+
+      {/* Why Choose Us Section */}
+      <section className="section bg-white">
         <div className="container-custom">
           <SectionHeading
-            title="Meet Our Team"
-            subtitle="The talented professionals behind our exceptional work."
+            title="Why Choose Us?"
+            subtitle="Discover what sets us apart as your trusted contractor in Atlanta."
             centered
           />
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {whyChooseUs.map((reason, index) => (
               <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
+                key={reason.title}
+                variants={fadeSlide}
+                initial="hidden"
+                whileInView="visible"
+                custom={index}
+                whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+                className="text-center p-6 rounded-lg bg-gradient-to-br from-primary-50 to-primary-100 shadow-md"
               >
-                <div className="mb-4 rounded-lg overflow-hidden">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full aspect-square object-cover"
-                  />
+                <div className="inline-flex items-center justify-center p-4 bg-primary-600 rounded-full text-white mb-4">
+                  <reason.icon className="h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                <p className="text-secondary-600">{member.role}</p>
+                <motion.h3 className="text-xl font-bold text-primary-800 mb-2">{reason.title}</motion.h3>
+                <motion.p className="text-secondary-600">{reason.description}</motion.p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-      
+
       <CTA />
     </PageTransition>
   );

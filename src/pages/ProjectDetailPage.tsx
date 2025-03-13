@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, User, MapPin, CheckCircle } from 'lucide-react';
 import PageTransition from '../components/ui/PageTransition';
 import CTA from '../components/home/CTA';
+import BeforeAfterSlider from '../components/ui/BeforeAfterSlider';
 
 // Mock project data - in a real app, this would come from an API or database
 interface Project {
@@ -19,6 +20,11 @@ interface Project {
   solution: string;
   features: string[];
   images: string[];
+  beforeAfterImages?: Array<{
+    before: string;
+    after: string;
+    description: string;
+  }>;
 }
 
 const projectsData: Project[] = [
@@ -45,6 +51,18 @@ const projectsData: Project[] = [
       'https://images.unsplash.com/photo-1600607687644-c7171b42498f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80',
       'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
       'https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
+    ],
+    beforeAfterImages: [
+      {
+        before: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+        after: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+        description: 'Complete exterior transformation with modern design elements and expanded windows'
+      },
+      {
+        before: 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+        after: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80',
+        description: 'Kitchen renovation with custom cabinetry, premium appliances, and open concept layout'
+      }
     ]
   },
   {
@@ -70,6 +88,13 @@ const projectsData: Project[] = [
       'https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
       'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
       'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+    ],
+    beforeAfterImages: [
+      {
+        before: 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80',
+        after: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80',
+        description: 'Complete office redesign with modern collaborative spaces and improved lighting'
+      }
     ]
   },
   {
@@ -94,6 +119,18 @@ const projectsData: Project[] = [
       'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
       'https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
       'https://images.unsplash.com/photo-1615529182904-14819c35db37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'
+    ],
+    beforeAfterImages: [
+      {
+        before: 'https://images.unsplash.com/photo-1533779283484-8ad4940aa3a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+        after: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1153&q=80',
+        description: 'Living room transformation with improved flow and modern finishes'
+      },
+      {
+        before: 'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+        after: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+        description: 'Bathroom renovation with luxury fixtures and timeless design'
+      }
     ]
   }
 ];
@@ -240,8 +277,48 @@ const ProjectDetailPage: React.FC = () => {
         </div>
       </section>
       
+      {/* Before & After Section */}
+      {project.beforeAfterImages && project.beforeAfterImages.length > 0 && (
+        <section className="section">
+          <div className="container-custom">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-3xl font-bold mb-6">Before & After</h2>
+              <p className="text-secondary-600 mb-8">
+                See the dramatic transformation of this project through our before and after comparisons.
+              </p>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {project.beforeAfterImages.map((comparison, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex flex-col"
+                  >
+                    <div className="aspect-w-16 aspect-h-9 mb-4">
+                      <BeforeAfterSlider 
+                        beforeImage={comparison.before}
+                        afterImage={comparison.after}
+                      />
+                    </div>
+                    <p className="text-center text-secondary-600">{comparison.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+      
       {/* Related Projects */}
-      <section className="section">
+      <section className="section bg-secondary-50">
         <div className="container-custom">
           <h2 className="text-3xl font-bold mb-8">Similar Projects</h2>
           
