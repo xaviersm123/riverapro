@@ -232,5 +232,6 @@ const ServicesPage: React.FC = () => {
     </PageTransition>
   );
 };
+{/* Subtle Blueprint Background */}
 
 export default ServicesPage;
