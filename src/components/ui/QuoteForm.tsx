@@ -82,7 +82,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ onSubmit }) => {
             id="phone"
             type="tel"
             className={`input-field ${errors.phone ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
-            placeholder="(555) 123-4567"
+            placeholder="(404) 555-1234"
             {...register('phone', { 
               required: 'Phone number is required',
               pattern: {
@@ -104,8 +104,8 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ onSubmit }) => {
             id="address"
             type="text"
             className={`input-field ${errors.address ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
-            placeholder="123 Main St, City, State"
-            {...register('address', { required: 'Address is required' })}
+            placeholder="123 Main St, Atlanta, GA"
+            {...register('address', { required: 'Project address is required' })}
           />
           {errors.address && (
             <p className="mt-1 text-sm text-red-600">{errors.address.message}</p>
@@ -124,11 +124,12 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ onSubmit }) => {
             {...register('projectType', { required: 'Project type is required' })}
           >
             <option value="">Select project type</option>
-            <option value="residential">Residential Construction</option>
-            <option value="commercial">Commercial Construction</option>
-            <option value="renovation">Renovation</option>
-            <option value="interior">Interior Design</option>
-            <option value="exterior">Exterior Design</option>
+            <option value="new-construction">New Construction</option>
+            <option value="remodeling">Residential Remodeling</option>
+            <option value="kitchen-remodel">Kitchen Remodel</option>
+            <option value="bathroom-remodel">Bathroom Remodel</option>
+            <option value="roofing">Roofing</option>
+            <option value="windows-siding">Windows & Siding</option>
             <option value="other">Other</option>
           </select>
           {errors.projectType && (
@@ -188,7 +189,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ onSubmit }) => {
           id="description"
           rows={4}
           className={`input-field ${errors.description ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
-          placeholder="Please describe your project in detail..."
+          placeholder="Please describe your home project in detail (e.g., kitchen remodel, roofing replacement, etc.)..."
           {...register('description', { required: 'Project description is required' })}
         />
         {errors.description && (

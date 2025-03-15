@@ -15,7 +15,7 @@ const CTA: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Ready to Start Your Project?
+            Ready to Transform Your Home?
           </motion.h2>
           
           <motion.p 
@@ -25,7 +25,7 @@ const CTA: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Contact us today for a free consultation and quote. Let's bring your vision to life with our expertise and craftsmanship.
+            Contact Rivera Pro today for a free consultation and quote on your residential remodeling or new construction project.
           </motion.p>
           
           <motion.div 
@@ -43,11 +43,11 @@ const CTA: React.FC = () => {
             </Link>
             
             <a 
-              href="tel:+15551234567" 
+              href="tel:+14042590577" 
               className="btn border-2 border-white text-white hover:bg-primary-700 focus:ring-white inline-flex items-center justify-center"
             >
               <Phone className="h-4 w-4 mr-2" />
-              <span>(555) 123-4567</span>
+              <span>(404) 259-0577</span>
             </a>
           </motion.div>
         </div>

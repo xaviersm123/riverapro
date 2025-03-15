@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Award, Briefcase, Clock, CheckCircle, Hammer, PaintBucket, Wrench, Home, Leaf, Users, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import PageTransition from '../components/ui/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import CTA from '../components/home/CTA';
@@ -26,32 +27,32 @@ const AboutPage: React.FC = () => {
   const values = [
     {
       title: 'Quality Craftsmanship',
-      description: 'I take pride in my work, delivering the highest quality in every project with precision and care.',
+      description: 'Rivera Pro delivers top-tier craftsmanship in every residential remodeling project with precision and care.',
       icon: Hammer,
     },
     {
       title: 'Integrity & Transparency',
-      description: 'I believe in honesty, offering clear communication and fair pricing throughout your project.',
+      description: 'We ensure honest communication and fair pricing for all your home remodeling needs.',
       icon: CheckCircle,
     },
     {
       title: 'Client-Centered Approach',
-      description: 'Your vision is my priority—I listen carefully and tailor my services to your unique needs.',
+      description: 'Your vision for a remodeled home is our priority—we tailor our services to your unique preferences.',
       icon: Users,
     },
     {
-      title: 'Innovation & Expertise',
-      description: 'I stay ahead of industry trends, bringing innovative solutions to every project.',
+      title: 'Expertise in Remodeling',
+      description: 'With decades of experience, we bring specialized skills to kitchens, bathrooms, and more.',
       icon: Wrench,
     },
     {
-      title: 'Sustainability',
-      description: 'I use environmentally responsible practices to ensure a sustainable future.',
+      title: 'Sustainable Practices',
+      description: 'We use eco-friendly materials to enhance the longevity of your home renovations.',
       icon: Leaf,
     },
     {
       title: 'Reliability',
-      description: 'I deliver on time and within budget, never compromising on quality.',
+      description: 'We complete every project on time and within budget, ensuring your satisfaction.',
       icon: Clock,
     },
   ];
@@ -60,44 +61,44 @@ const AboutPage: React.FC = () => {
     {
       year: '2005',
       title: 'The Beginning',
-      description: 'Started as a small residential renovation contractor with a passion for quality craftsmanship.',
+      description: 'Rivera Pro started as a small residential remodeling contractor with a passion for quality craftsmanship.',
     },
     {
       year: '2010',
       title: 'First Major Project',
-      description: 'Completed my first large-scale residential project, earning recognition for excellence.',
+      description: 'Completed the first large-scale home remodeling project, gaining recognition for excellence.',
     },
     {
       year: '2015',
-      title: 'Expanded Services',
-      description: 'Began offering commercial construction and specialized renovation services.',
+      title: 'Expanded Offerings',
+      description: 'Began specializing in new construction and home additions alongside remodeling.',
     },
     {
       year: '2020',
-      title: 'Award-Winning Work',
-      description: 'Received an industry award for a luxury home renovation project.',
+      title: 'Industry Recognition',
+      description: 'Earned praise for a luxury kitchen and bathroom renovation project.',
     },
     {
       year: '2025',
       title: 'Today',
-      description: 'A trusted contractor with 750+ completed projects and a 98% on-time completion rate.',
+      description: 'A trusted name in Atlanta with 750+ completed projects and a 98% on-time completion rate.',
     },
   ];
 
   const whyChooseUs = [
     {
       title: 'Personalized Service',
-      description: 'As a solo contractor, I provide hands-on, personalized service to every client.',
+      description: 'Led by Edwin Rivera, we offer hands-on, tailored remodeling solutions for your home.',
       icon: Home,
     },
     {
       title: 'Proven Expertise',
-      description: 'With over 20 years of experience, I bring unmatched skill to every project.',
+      description: 'Over 20 years of experience in residential remodeling and construction.',
       icon: Award,
     },
     {
       title: 'Attention to Detail',
-      description: 'I focus on the little things, ensuring every project is flawless.',
+      description: 'We focus on every detail, from painting to framing, for flawless results.',
       icon: PaintBucket,
     },
   ];
@@ -105,20 +106,20 @@ const AboutPage: React.FC = () => {
   return (
     <PageTransition>
       <Helmet>
-        <title>About Us | Elite Contractor</title>
+        <title>About Us | Rivera Pro</title>
         <meta
           name="description"
-          content="Learn about Elite Contractor, a trusted Atlanta contractor with over 20 years of experience in premium construction and renovation services."
+          content="Learn about Rivera Pro, a trusted Atlanta contractor with over 20 years of experience in residential remodeling and new construction."
         />
-        <meta property="og:title" content="About Us | Elite Contractor" />
+        <meta property="og:title" content="About Us | Rivera Pro" />
         <meta
           property="og:description"
-          content="Learn about Elite Contractor, a trusted Atlanta contractor with over 20 years of experience in premium construction and renovation services."
+          content="Learn about Rivera Pro, a trusted Atlanta contractor with over 20 years of experience in residential remodeling and new construction."
         />
-        <meta property="og:image" content="https://elitecontractor.com/og-image.jpg" />
-        <meta property="og:url" content="https://elitecontractor.com/about" />
+        <meta property="og:image" content="https://riverapro.com/og-image.jpg" />
+        <meta property="og:url" content="https://riverapro.com/about" />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://elitecontractor.com/about" />
+        <link rel="canonical" href="https://riverapro.com/about" />
         <link
           rel="preload"
           href="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80&fm=webp"
@@ -146,7 +147,7 @@ const AboutPage: React.FC = () => {
             whileInView="visible"
             custom={0}
           >
-            About Elite Contractor
+            About Rivera Pro
           </motion.h1>
           <motion.p
             className="text-xl text-secondary-200 mb-8 max-w-2xl mx-auto"
@@ -155,7 +156,7 @@ const AboutPage: React.FC = () => {
             whileInView="visible"
             custom={1}
           >
-            Building excellence through craftsmanship, innovation, and unwavering commitment to quality since 2005.
+            Delivering excellence in residential remodeling, new construction, and additions since 2005.
           </motion.p>
           <motion.div
             variants={fadeSlide}
@@ -163,10 +164,10 @@ const AboutPage: React.FC = () => {
             whileInView="visible"
             custom={2}
           >
-            <a href="/contact" className="btn-primary inline-flex items-center">
+            <Link to="/contact" className="btn-primary inline-flex items-center">
               Get in Touch
               <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -176,7 +177,7 @@ const AboutPage: React.FC = () => {
         <div className="container-custom">
           <SectionHeading
             title="Our Journey"
-            subtitle="From humble beginnings to a trusted contractor—here’s how we built Elite Contractor over the years."
+            subtitle="From humble beginnings to a trusted name in residential remodeling—here’s our story."
             centered
           />
           <div className="relative max-w-3xl mx-auto">
@@ -243,7 +244,7 @@ const AboutPage: React.FC = () => {
         <div className="container-custom">
           <SectionHeading
             title="Our Core Values"
-            subtitle="These principles guide every project we undertake and define our approach as a contractor."
+            subtitle="These principles guide every residential remodeling project we undertake."
             centered
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -272,7 +273,7 @@ const AboutPage: React.FC = () => {
         <div className="container-custom">
           <SectionHeading
             title="Why Choose Us?"
-            subtitle="Discover what sets us apart as your trusted contractor in Atlanta."
+            subtitle="Discover what makes Rivera Pro your trusted Atlanta remodeling contractor."
             centered
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -5,12 +5,12 @@ import { CheckCircle } from 'lucide-react';
 
 const About: React.FC = () => {
   const highlights = [
-    'Over 20 years of industry experience',
-    'Award-winning designs and craftsmanship',
+    'Over 20 years of residential remodeling expertise',
+    'Specialized craftsmanship in kitchens and bathrooms',
     'Fully licensed and insured professionals',
-    'Sustainable building practices',
-    'On-time and on-budget completion',
-    'Exceptional customer satisfaction'
+    'Sustainable materials for lasting quality',
+    'Timely completion of every project',
+    'Dedicated to customer satisfaction'
   ];
 
   return (
@@ -27,8 +27,8 @@ const About: React.FC = () => {
           >
             <div className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
-                alt="Construction team" 
+                src="https://images.pexels.com/photos/5974053/pexels-photo-5974053.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                alt="Remodeled modern kitchen by Rivera Pro" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -47,10 +47,10 @@ const About: React.FC = () => {
           >
             <h2 className="section-title">Crafting Excellence Since 2005</h2>
             <p className="text-secondary-600 mb-6">
-              Elite Contractor is a premier construction company dedicated to delivering exceptional quality and craftsmanship in every project. Our team of skilled professionals brings decades of combined experience to transform your vision into reality.
+              Rivera Pro is a premier residential remodeling company dedicated to transforming homes across Atlanta with exceptional craftsmanship. Our skilled team brings over two decades of experience to every kitchen, bathroom, and full-home remodel.
             </p>
             <p className="text-secondary-600 mb-8">
-              We pride ourselves on our attention to detail, commitment to excellence, and ability to deliver projects on time and within budget. Our collaborative approach ensures that your unique needs and preferences are at the center of everything we do.
+              We take pride in our meticulous attention to detail, use of high-quality materials, and commitment to completing projects on time and within budget. At Rivera Pro, your vision for a beautifully remodeled home is our priority.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
@@ -62,7 +62,7 @@ const About: React.FC = () => {
               ))}
             </div>
             
-            <Link to="/about" className="btn-primary">
+            <Link to="/about" className="btn-primary" aria-label="Learn more about Rivera Pro">
               Learn More About Us
             </Link>
           </motion.div>

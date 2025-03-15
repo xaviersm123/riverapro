@@ -13,10 +13,10 @@ const BeforeAfterSlider = ({ beforeImage, afterImage, beforeLabel = "Before", af
     setIsDragging(false);
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: MouseEvent) => {
     if (!isDragging || !containerRef.current) return;
     
-    const containerRect = containerRef.current.getBoundingClientRect();
+    const containerRect = (containerRef.current as HTMLElement).getBoundingClientRect();
     const containerWidth = containerRect.width;
     const offsetX = e.clientX - containerRect.left;
     
@@ -29,10 +29,10 @@ const BeforeAfterSlider = ({ beforeImage, afterImage, beforeLabel = "Before", af
     setSliderPosition(newPosition);
   };
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = (e: TouchEvent) => {
     if (!containerRef.current) return;
     
-    const containerRect = containerRef.current.getBoundingClientRect();
+    const containerRect = (containerRef.current as HTMLElement).getBoundingClientRect();
     const containerWidth = containerRect.width;
     const touch = e.touches[0];
     const offsetX = touch.clientX - containerRect.left;
@@ -68,7 +68,7 @@ const BeforeAfterSlider = ({ beforeImage, afterImage, beforeLabel = "Before", af
       <div className="absolute inset-0">
         <img 
           src={afterImage} 
-          alt="After" 
+          alt="After transformation image" 
           className="w-full h-full object-cover"
         />
         <div className="absolute bottom-4 right-4 bg-white bg-opacity-75 text-primary-600 px-3 py-1 rounded-md text-sm font-medium">
@@ -83,7 +83,7 @@ const BeforeAfterSlider = ({ beforeImage, afterImage, beforeLabel = "Before", af
       >
         <img 
           src={beforeImage} 
-          alt="Before"
+          alt="Before transformation image"
           className="absolute top-0 left-0 w-full h-full object-cover"
         />
         <div className="absolute bottom-4 left-4 bg-white bg-opacity-75 text-primary-600 px-3 py-1 rounded-md text-sm font-medium">

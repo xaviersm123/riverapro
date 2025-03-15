@@ -19,31 +19,31 @@ const HomePage: React.FC = () => {
   return (
     <PageTransition>
       <Helmet>
-        <title>Elite Contractor | Premium Construction Services in Atlanta</title>
+        <title>Rivera Pro | Expert Residential Remodeling in Atlanta</title>
         <meta
           name="description"
-          content="Elite Contractor provides premium construction, renovation, and remodeling services in Atlanta with exceptional craftsmanship and attention to detail. Serving Buckhead, Midtown, Sandy Springs, and the greater Atlanta area."
+          content="Rivera Pro offers expert residential remodeling services in Atlanta, including kitchen and bathroom renovations, new construction, additions, and more. Serving Buckhead, Midtown, Sandy Springs, and the greater Atlanta area."
         />
         <meta
           name="keywords"
-          content="Atlanta contractor, home renovation Atlanta, construction services, kitchen remodeling, bathroom renovation, home improvement Atlanta, custom builds, Atlanta remodeling contractor"
+          content="Atlanta remodeling contractor, residential remodeling, kitchen renovation, bathroom renovation, new construction Atlanta, home additions, sheetrock, concrete, painting, framing, hardwood, carpentry, windows, roofing, siding"
         />
-        <meta property="og:title" content="Elite Contractor | Premium Construction Services in Atlanta" />
+        <meta property="og:title" content="Rivera Pro | Expert Residential Remodeling in Atlanta" />
         <meta
           property="og:description"
-          content="Elite Contractor provides premium construction, renovation, and remodeling services in Atlanta with exceptional craftsmanship. Serving Buckhead, Midtown, and more."
+          content="Rivera Pro specializes in residential remodeling, new construction, and additions in Atlanta with top-notch craftsmanship. Serving Buckhead, Midtown, and more."
         />
-        <meta property="og:image" content="https://elitecontractor.com/og-image.jpg" />
-        <meta property="og:url" content="https://elitecontractor.com" />
+        <meta property="og:image" content="https://riverapro.com/og-image.jpg" />
+        <meta property="og:url" content="https://riverapro.com" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Elite Contractor | Premium Construction Services in Atlanta" />
+        <meta name="twitter:title" content="Rivera Pro | Expert Residential Remodeling in Atlanta" />
         <meta
           name="twitter:description"
-          content="Elite Contractor provides premium construction, renovation, and remodeling services in Atlanta with exceptional craftsmanship. Serving Buckhead, Midtown, and more."
+          content="Rivera Pro specializes in residential remodeling, new construction, and additions in Atlanta with top-notch craftsmanship. Serving Buckhead, Midtown, and more."
         />
-        <meta name="twitter:image" content="https://elitecontractor.com/og-image.jpg" />
-        <link rel="canonical" href="https://elitecontractor.com" />
+        <meta name="twitter:image" content="https://riverapro.com/og-image.jpg" />
+        <link rel="canonical" href="https://riverapro.com" />
         <link
           rel="preload"
           href="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80&fm=webp"
@@ -62,10 +62,10 @@ const HomePage: React.FC = () => {
             {
               "@context": "https://schema.org",
               "@type": "HomeAndConstructionBusiness",
-              "name": "Elite Contractor",
-              "url": "https://elitecontractor.com",
-              "logo": "https://elitecontractor.com/logo.png",
-              "description": "Premium construction and renovation services with exceptional craftsmanship in Atlanta",
+              "name": "Rivera Pro",
+              "url": "https://riverapro.com",
+              "logo": "https://riverapro.com/logo.png",
+              "description": "Expert residential remodeling, new construction, and additions in Atlanta with top-quality craftsmanship",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "123 Construction Ave",
@@ -80,7 +80,7 @@ const HomePage: React.FC = () => {
                 "longitude": "-84.3880"
               },
               "telephone": "+15551234567",
-              "email": "info@elitecontractor.com",
+              "email": "info@riverapro.com",
               "areaServed": [
                 {"@type": "City", "name": "Atlanta"},
                 {"@type": "City", "name": "Buckhead"},
@@ -97,9 +97,9 @@ const HomePage: React.FC = () => {
                 }
               ],
               "sameAs": [
-                "https://facebook.com/elitecontractor",
-                "https://twitter.com/elitecontractor",
-                "https://instagram.com/elitecontractor"
+                "https://facebook.com/riverapro",
+                "https://twitter.com/riverapro",
+                "https://instagram.com/riverapro"
               ]
             }
           `}

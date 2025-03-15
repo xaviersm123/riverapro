@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-secondary-900 text-white pt-16 pb-8">
+    <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info - Open by default on mobile */}
@@ -43,47 +43,48 @@ const Footer: React.FC = () => {
             <Link
               to="/"
               className="flex items-center gap-2 text-white font-display font-bold text-xl mb-4"
+              aria-label="Go to Rivera Pro homepage"
             >
               <Home className="h-6 w-6" />
-              <span>Elite Contractor</span>
+              <span>Rivera Pro</span>
             </Link>
-            <p className="text-secondary-300 mb-6">
-              Transforming spaces with exceptional craftsmanship and attention to detail since 2005.
+            <p className="text-gray-400 mb-6">
+              Transforming homes with exceptional craftsmanship in residential remodeling since 2005.
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
+                href="https://facebook.com/riverapro"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="text-secondary-300 hover:text-primary-400 transition-colors"
+                className="text-gray-400 hover:text-yellow-400 transition-colors"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/riverapro"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="text-secondary-300 hover:text-primary-400 transition-colors"
+                className="text-gray-400 hover:text-yellow-400 transition-colors"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://twitter.com/riverapro"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
-                className="text-secondary-300 hover:text-primary-400 transition-colors"
+                className="text-gray-400 hover:text-yellow-400 transition-colors"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/company/riverapro"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-secondary-300 hover:text-primary-400 transition-colors"
+                className="text-gray-400 hover:text-yellow-400 transition-colors"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
@@ -94,32 +95,32 @@ const Footer: React.FC = () => {
           <FooterSection title="Quick Links">
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-secondary-300 hover:text-primary-400 transition-colors">
+                <Link to="/" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-secondary-300 hover:text-primary-400 transition-colors">
+                <Link to="/about" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-secondary-300 hover:text-primary-400 transition-colors">
+                <Link to="/services" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/projects" className="text-secondary-300 hover:text-primary-400 transition-colors">
+                <Link to="/projects" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   Projects
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-secondary-300 hover:text-primary-400 transition-colors">
+                <Link to="/contact" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link to="/quote" className="text-secondary-300 hover:text-primary-400 transition-colors">
+                <Link to="/quote" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   Get a Quote
                 </Link>
               </li>
@@ -132,49 +133,49 @@ const Footer: React.FC = () => {
               <li>
                 <Link
                   to="/services"
-                  className="text-secondary-300 hover:text-primary-400 transition-colors"
+                  className="text-gray-400 hover:text-yellow-400 transition-colors"
                 >
-                  Residential Construction
+                  Kitchen Remodeling
                 </Link>
               </li>
               <li>
                 <Link
                   to="/services"
-                  className="text-secondary-300 hover:text-primary-400 transition-colors"
+                  className="text-gray-400 hover:text-yellow-400 transition-colors"
                 >
-                  Commercial Construction
+                  Bathroom Renovation
                 </Link>
               </li>
               <li>
                 <Link
                   to="/services"
-                  className="text-secondary-300 hover:text-primary-400 transition-colors"
+                  className="text-gray-400 hover:text-yellow-400 transition-colors"
                 >
-                  Renovation
+                  New Construction
                 </Link>
               </li>
               <li>
                 <Link
                   to="/services"
-                  className="text-secondary-300 hover:text-primary-400 transition-colors"
+                  className="text-gray-400 hover:text-yellow-400 transition-colors"
                 >
-                  Interior Design
+                  Home Additions
                 </Link>
               </li>
               <li>
                 <Link
                   to="/services"
-                  className="text-secondary-300 hover:text-primary-400 transition-colors"
+                  className="text-gray-400 hover:text-yellow-400 transition-colors"
                 >
-                  Exterior Design
+                  Roofing
                 </Link>
               </li>
               <li>
                 <Link
                   to="/services"
-                  className="text-secondary-300 hover:text-primary-400 transition-colors"
+                  className="text-gray-400 hover:text-yellow-400 transition-colors"
                 >
-                  Consultation
+                  Windows & Siding
                 </Link>
               </li>
             </ul>
@@ -184,43 +185,52 @@ const Footer: React.FC = () => {
           <FooterSection title="Contact Us">
             <ul className="space-y-4">
               <li className="flex items-start">
-                <MapPin className="h-5 w-5 text-primary-400 mr-3 mt-0.5" />
-                <span className="text-secondary-300">
-                  123 Construction Ave, Building City, BC 12345
+                <MapPin className="h-5 w-5 text-yellow-400 mr-3 mt-0.5" />
+                <span className="text-gray-400">
+                  Atlanta, GA (Contact for exact address)
                 </span>
               </li>
               <li className="flex items-center">
-                <Phone className="h-5 w-5 text-primary-400 mr-3" />
+                <Phone className="h-5 w-5 text-yellow-400 mr-3" />
                 <a
-                  href="tel:+15551234567"
-                  className="text-secondary-300 hover:text-primary-400 transition-colors"
+                  href="tel:+14042590577"
+                  className="text-gray-400 hover:text-yellow-400 transition-colors"
                 >
-                  (555) 123-4567
+                  404-259-0577
                 </a>
               </li>
               <li className="flex items-center">
-                <Mail className="h-5 w-5 text-primary-400 mr-3" />
+                <Phone className="h-5 w-5 text-yellow-400 mr-3" />
                 <a
-                  href="mailto:info@elitecontractor.com"
-                  className="text-secondary-300 hover:text-primary-400 transition-colors"
+                  href="tel:+14043247464"
+                  className="text-gray-400 hover:text-yellow-400 transition-colors"
                 >
-                  info@elitecontractor.com
+                  404-324-7464
+                </a>
+              </li>
+              <li className="flex items-center">
+                <Mail className="h-5 w-5 text-yellow-400 mr-3" />
+                <a
+                  href="mailto:Riverapro67@gmail.com"
+                  className="text-gray-400 hover:text-yellow-400 transition-colors"
+                >
+                  Riverapro67@gmail.com
                 </a>
               </li>
             </ul>
           </FooterSection>
         </div>
 
-        {/* Bottom Bar - Unchanged */}
-        <div className="pt-8 border-t border-secondary-800 text-center md:flex md:justify-between md:items-center">
-          <p className="text-secondary-400 text-sm">
-            © {currentYear} Elite Contractor. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-gray-800 text-center md:flex md:justify-between md:items-center">
+          <p className="text-gray-500 text-sm">
+            © {currentYear} Rivera Pro. All rights reserved.
           </p>
-          <div className="mt-4 md:mt-0 text-sm text-secondary-400 space-x-6">
-            <Link to="/privacy-policy" className="hover:text-primary-400 transition-colors">
+          <div className="mt-4 md:mt-0 text-sm text-gray-500 space-x-6">
+            <Link to="/privacy-policy" className="hover:text-yellow-400 transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms-of-service" className="hover:text-primary-400 transition-colors">
+            <Link to="/terms-of-service" className="hover:text-yellow-400 transition-colors">
               Terms of Service
             </Link>
           </div>

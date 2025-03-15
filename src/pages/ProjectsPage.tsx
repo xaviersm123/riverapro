@@ -10,11 +10,11 @@ const ProjectsPage: React.FC = () => {
   // Project categories
   const categories = [
     'All',
-    'Residential',
-    'Commercial',
-    'Renovation',
-    'Interior Design',
-    'Exterior Design'
+    'New Construction',
+    'Remodeling',
+    'Roofing',
+    'Windows & Siding',
+    'Additions'
   ];
   
   // State for active category filter
@@ -24,57 +24,57 @@ const ProjectsPage: React.FC = () => {
   const projects = [
     {
       id: '1',
-      title: 'Modern Lakeside Villa',
-      category: 'Residential',
-      imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      title: 'Modern Family Home',
+      category: 'New Construction',
+      imageUrl: 'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80' // Modern house under construction
     },
     {
       id: '2',
-      title: 'Downtown Office Complex',
-      category: 'Commercial',
-      imageUrl: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80'
+      title: 'Luxury Kitchen Remodel',
+      category: 'Remodeling',
+      imageUrl: 'https://images.unsplash.com/photo-1616594168015-7e4c3b9da2e7?auto=format&fit=crop&w=1170&q=80' // Remodeled kitchen
     },
     {
       id: '3',
-      title: 'Luxury Penthouse Renovation',
-      category: 'Renovation',
-      imageUrl: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1153&q=80'
+      title: 'Roof Replacement Project',
+      category: 'Roofing',
+      imageUrl: 'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80' // Roofing work
     },
     {
       id: '4',
-      title: 'Minimalist Home Design',
-      category: 'Interior Design',
-      imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      title: 'Energy-Efficient Windows Upgrade',
+      category: 'Windows & Siding',
+      imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80' // Exterior with new windows
     },
     {
       id: '5',
-      title: 'Urban Garden Terrace',
-      category: 'Exterior Design',
-      imageUrl: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      title: 'Spacious Home Addition',
+      category: 'Additions',
+      imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1170&q=80' // Home addition
     },
     {
       id: '6',
-      title: 'Historic Building Restoration',
-      category: 'Renovation',
-      imageUrl: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+      title: 'Contemporary Bathroom Renovation',
+      category: 'Remodeling',
+      imageUrl: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=687&q=80' // Bathroom remodel
     },
     {
       id: '7',
-      title: 'Coastal Beach House',
-      category: 'Residential',
-      imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      title: 'Suburban Home Build',
+      category: 'New Construction',
+      imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80' // New suburban home
     },
     {
       id: '8',
-      title: 'Modern Restaurant Design',
-      category: 'Commercial',
-      imageUrl: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      title: 'Exterior Siding Refresh',
+      category: 'Windows & Siding',
+      imageUrl: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1170&q=80' // Exterior with new siding
     },
     {
       id: '9',
-      title: 'Luxury Bathroom Remodel',
-      category: 'Interior Design',
-      imageUrl: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      title: 'Roof and Attic Renovation',
+      category: 'Roofing',
+      imageUrl: 'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80' // Roofing project
     }
   ];
   
@@ -86,8 +86,11 @@ const ProjectsPage: React.FC = () => {
   return (
     <PageTransition>
       <Helmet>
-        <title>Our Projects | Elite Contractor</title>
-        <meta name="description" content="Explore Elite Contractor's portfolio of residential, commercial, renovation, and design projects showcasing our exceptional craftsmanship." />
+        <title>Our Projects | Rivera Pro</title>
+        <meta
+          name="description"
+          content="Explore Rivera Pro's portfolio of residential remodeling, new construction, and home improvement projects in Atlanta, showcasing our exceptional craftsmanship."
+        />
       </Helmet>
       
       {/* Hero Section */}
@@ -96,7 +99,7 @@ const ProjectsPage: React.FC = () => {
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Projects</h1>
             <p className="text-xl text-secondary-200">
-              Explore our portfolio of exceptional work across residential, commercial, and specialized projects.
+              Discover Rivera Pro’s portfolio of residential remodeling, new construction, and home improvement projects in Atlanta.
             </p>
           </div>
         </div>
@@ -107,7 +110,7 @@ const ProjectsPage: React.FC = () => {
         <div className="container-custom">
           <SectionHeading
             title="Featured Projects"
-            subtitle="Browse our collection of completed projects showcasing our expertise and craftsmanship."
+            subtitle="Browse our collection of completed residential projects showcasing our expertise in remodeling and construction."
           />
           
           {/* Category Filter */}
@@ -139,6 +142,7 @@ const ProjectsPage: React.FC = () => {
                 title={project.title}
                 category={project.category}
                 imageUrl={project.imageUrl}
+                altText={`${project.title} - ${project.category} project by Rivera Pro`} // Added altText
                 delay={index}
               />
             ))}

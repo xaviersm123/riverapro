@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { PaintBucket, Sprout, Wrench, Layers } from 'lucide-react';
+import { PaintRoller, Wrench, Hammer, DoorClosed, Layers, Home, HardHat, Box } from 'lucide-react';
 
 const ContractorServices: React.FC = () => {
     const containerVariants = {
@@ -33,28 +33,52 @@ const ContractorServices: React.FC = () => {
     
     const services: Service[] = [
         {
-            title: 'Painting',
-            description: 'Transform your space with our professional painting services. We use high-quality paints and expert techniques for a flawless finish.',
-            icon: PaintBucket,
+            title: 'Kitchen Remodeling',
+            description: 'Revamp your kitchen with modern designs, custom cabinetry, and expert craftsmanship for a space you’ll love.',
+            icon: Home,
             color: 'from-blue-500 to-blue-600'
         },
         {
-            title: 'Landscaping',
-            description: 'Enhance your outdoor space with our landscaping services. From design to maintenance, we\'ve got you covered.',
-            icon: Sprout,
+            title: 'Bathroom Renovation',
+            description: 'Transform your bathroom into a luxurious retreat with our professional renovation services.',
+            icon: Wrench,
             color: 'from-green-500 to-green-600'
         },
         {
-            title: 'Plumbing',
-            description: 'Our plumbing services keep your home\'s water systems running smoothly. We handle repairs, installations, and more.',
-            icon: Wrench,
+            title: 'Hardwood & Carpentry',
+            description: 'Add warmth and elegance with our hardwood installation and custom carpentry services.',
+            icon: Hammer,
             color: 'from-indigo-500 to-indigo-600'
         },
         {
-            title: 'Flooring',
-            description: 'Upgrade your home with our expert flooring services. We offer a variety of materials and styles to suit your needs.',
-            icon: Layers,
+            title: 'Windows & Siding',
+            description: 'Enhance your home’s exterior with energy-efficient windows and durable siding, expertly installed.',
+            icon: DoorClosed,
             color: 'from-orange-500 to-orange-600'
+        },
+        {
+            title: 'Sheetrock & Painting',
+            description: 'Achieve a flawless finish with our sheetrock installation and professional painting services.',
+            icon: PaintRoller,
+            color: 'from-purple-500 to-purple-600'
+        },
+        {
+            title: 'Basement Finishing',
+            description: 'Turn your basement into a functional living space with our expert finishing services.',
+            icon: Layers,
+            color: 'from-teal-500 to-teal-600'
+        },
+        {
+            title: 'Roofing',
+            description: 'Protect your home with our reliable roofing services, ensuring durability and quality.',
+            icon: HardHat,
+            color: 'from-red-500 to-red-600'
+        },
+        {
+            title: 'Concrete & Framing',
+            description: 'Build a solid foundation with our concrete work and expert framing services.',
+            icon: Box,
+            color: 'from-gray-500 to-gray-600'
         },
     ];
 
@@ -67,9 +91,9 @@ const ContractorServices: React.FC = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-20"
                 >
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">Contractor Specialties</h2>
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Specialties</h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Our team delivers exceptional quality and reliability across all our specialized contractor services.
+                        Rivera Pro delivers top-quality craftsmanship in residential remodeling, new construction, and additions.
                     </p>
                 </motion.div>
                 
@@ -99,7 +123,7 @@ const ContractorServices: React.FC = () => {
                                             <Icon width={32} height={32} className="text-white" />
                                         </div>
                                     </div>
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">{service.title}</h3>
                                     <p className="text-gray-600 mb-6 h-24">{service.description}</p>
                                 </div>
                             </motion.div>

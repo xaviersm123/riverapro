@@ -9,84 +9,87 @@ import EnhancedServiceSection from '../components/services/EnhancedServiceSectio
 import CardServiceSection from '../components/services/CardServiceSection';
 import ToolBeltHeader from '../components/ui/ToolBeltHeader';
 import ParallaxHero from '../components/ui/ParallaxHero';
-import EnhancedTimelineStep from '../components/ui/EnhancedTimelineStep'; // New component
+import EnhancedTimelineStep from '../components/ui/EnhancedTimelineStep';
 
 const ServicesPage: React.FC = () => {
   const services = [
     {
-      id: 'residential',
+      id: 'new-construction',
       icon: Home,
-      title: 'Residential Construction',
-      description: 'Dream homes built with heart, precision, and a touch of magic!',
-      features: ['Custom designs', 'Additions', 'Luxury builds', 'Eco-friendly options', 'Smart tech'],
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80'
+      title: 'New Construction',
+      description: 'Build your dream home with expert craftsmanship and attention to detail.',
+      features: ['Custom home designs', 'Home additions', 'Eco-friendly construction', 'Smart home integration'],
+      image: 'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80'
     },
     {
-      id: 'commercial',
-      icon: Building2,
-      title: 'Commercial Construction',
-      description: 'Business spaces that work as hard as you do—built to impress.',
-      features: ['Offices', 'Retail', 'Restaurants', 'Medical facilities', 'Tenant upgrades'],
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1170&q=80'
-    },
-    {
-      id: 'renovation',
+      id: 'remodeling',
       icon: Hammer,
-      title: 'Renovation Revolution',
-      description: 'Old spaces, new stories—transformations that pack a punch!',
-      features: ['Kitchens', 'Bathrooms', 'Basements', 'Historic restos', 'Commercial revamps'],
-      image: 'https://images.unsplash.com/photo-1574359411659-15573a27d625?auto=format&fit=crop&w=1170&q=80'
+      title: 'Residential Remodeling',
+      description: 'Transform your home with personalized renovations and quality finishes.',
+      features: ['Kitchen renovations', 'Bathroom upgrades', 'Basement finishing'],
+      image: 'https://images.unsplash.com/photo-1616594168015-7e4c3b9da2e7?auto=format&fit=crop&w=1170&q=80'
     },
     {
-      id: 'interior',
-      icon: Palette,
-      title: 'Interior Design Magic',
-      description: 'Spaces that pop—style and function in perfect harmony.',
-      features: ['Layouts', 'Colors', 'Custom furniture', 'Lighting', 'Art curation'],
-      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1170&q=80'
-    },
-    {
-      id: 'exterior',
+      id: 'roofing',
       icon: PaintBucket,
-      title: 'Exterior Design',
-      description: 'Curb appeal that turns heads—outdoor living, redefined.',
-      features: ['Facades', 'Patios', 'Landscaping', 'Hardscaping', 'Lighting'],
-      image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1170&q=80'
+      title: 'Roofing Solutions',
+      description: 'Ensure your home’s protection with durable and reliable roofing services.',
+      features: ['Roof repairs', 'Replacements', 'Inspections'],
+      image: 'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80',
+      tagline: 'Your Home’s First Line of Defense!'
+    },
+    {
+      id: 'windows-siding',
+      icon: PaintBucket,
+      title: 'Windows & Siding',
+      description: 'Enhance your home’s exterior with energy-efficient and stylish upgrades.',
+      features: ['Window installation', 'Siding replacements', 'Weatherproofing'],
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80',
+      tagline: 'Style Meets Durability!'
     },
     {
       id: 'sustainable',
       icon: Leaf,
-      title: 'Sustainable Building Solutions',
-      description: 'Green living starts here—sustainable designs for a better future!',
-      features: ['Solar panel integration', 'Energy-efficient materials', 'Water conservation systems', 'Green certifications', 'Eco-friendly landscaping'],
+      title: 'Sustainable Building',
+      description: 'Create an eco-friendly home with sustainable construction practices.',
+      features: ['Energy-efficient materials', 'Solar integration', 'Water conservation'],
       image: 'https://images.unsplash.com/photo-1575550959106-5a9defe6b388?auto=format&fit=crop&w=1170&q=80'
     },
     {
-      id: 'plumbing',
+      id: 'painting',
+      icon: PaintBucket,
+      title: 'Painting & Finishing',
+      description: 'Refresh your home with professional painting and flawless finishes.',
+      features: ['Interior painting', 'Exterior painting', 'Sheetrock finishing'],
+      image: 'https://images.unsplash.com/photo-1572125116898-2b0c6e2e6f2e?auto=format&fit=crop&w=1170&q=80',
+      tagline: 'A Flawless Finish Every Time!'
+    },
+    {
+      id: 'framing',
       icon: Wrench,
-      title: 'Precision Plumbing',
-      description: 'Flowing solutions with no leaks attached—plumbing done right!',
-      features: ['Leak fixes', 'Pipe installs', 'Water heaters', 'Drain cleaning', '24/7 emergencies'],
-      image: 'https://images.unsplash.com/photo-1581091870622-1c6b8f8c1b3b?auto=format&fit=crop&w=1170&q=80',
-      tagline: 'We Keep the Water Where It Belongs!'
+      title: 'Framing & Structural Work',
+      description: 'Lay a strong foundation for your home with expert structural services.',
+      features: ['Wall framing', 'Structural repairs', 'Custom builds'],
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80',
+      tagline: 'Built to Last!'
     },
     {
-      id: 'flooring',
+      id: 'hardwood-lvp',
       icon: Layers,
-      title: 'Fabulous Flooring',
-      description: 'Step up your style with floors that steal the show!',
-      features: ['Hardwood', 'Tile & stone', 'Carpet', 'Laminate', 'Refinishing'],
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80',
-      tagline: 'Every Step Feels Like Home!'
+      title: 'Hardwood & LVP Flooring',
+      description: 'Elevate your home with stunning Hardwood and LVP flooring solutions.',
+      features: ['Hardwood installation', 'LVP installation', 'Refinishing', 'Custom designs'],
+      image: 'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80',
+      tagline: 'Timeless Elegance Underfoot!'
     },
     {
-      id: 'woodworking',
+      id: 'carpentry',
       icon: TreePine,
-      title: 'Masterful Woodworking',
-      description: 'Crafted with love—woodwork that’s a cut above the rest!',
-      features: ['Custom cabinets', 'Shelving', 'Furniture', 'Trim', 'Restoration'],
+      title: 'Custom Carpentry',
+      description: 'Add unique wooden elements to your home with expert carpentry.',
+      features: ['Custom cabinets', 'Trim work', 'Built-in shelving'],
       image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80',
-      tagline: 'We Nail It Every Time!'
+      tagline: 'Crafted with Precision!'
     }
   ];
 
@@ -94,52 +97,55 @@ const ServicesPage: React.FC = () => {
     {
       step: 1,
       title: 'Consultation',
-      description: 'We begin with a thorough consultation to understand your vision, requirements, and budget.',
-      details: 'Our team sits down with you to understand your vision, budget, and timeline. We’ll discuss your needs in detail and provide expert advice to ensure we’re aligned from the start.'
+      description: 'We begin with a detailed discussion to understand your home improvement goals.',
+      details: 'Led by Edwin Rivera, our team meets with you to assess your vision, budget, and timeline for your residential project, offering tailored advice.'
     },
     {
       step: 2,
       title: 'Design & Planning',
-      description: 'Our team develops detailed designs and plans, incorporating your feedback at every stage.',
-      details: 'Our designers create detailed plans and 3D renderings, incorporating your feedback at every step. This phase ensures that every detail aligns with your vision before we start building.'
+      description: 'We create custom designs and plans for your home project.',
+      details: 'Our designers develop detailed blueprints and visuals, incorporating your input to ensure your remodeling or construction plan is perfect.'
     },
     {
       step: 3,
       title: 'Proposal & Contract',
-      description: 'We provide a comprehensive proposal outlining scope, timeline, and costs for your approval.',
-      details: 'We develop a comprehensive project plan, including timelines, resource allocation, and milestones. You’ll receive a clear roadmap of what to expect at every stage of the process.'
+      description: 'We present a clear proposal with scope, timeline, and costs.',
+      details: 'You’ll receive a detailed plan outlining timelines, materials, and costs for your home improvement, ensuring complete transparency.'
     },
     {
       step: 4,
       title: 'Construction',
-      description: 'Our skilled craftsmen execute the project with precision, quality, and attention to detail.',
-      details: 'Our skilled craftsmen bring the design to life, using high-quality materials and techniques. We keep you updated with regular progress reports and site visits to ensure everything is on track.'
+      description: 'Our craftsmen execute your home project with precision.',
+      details: 'Our skilled team brings your design to life with high-quality materials, providing regular updates and site visits throughout the process.'
     },
     {
       step: 5,
       title: 'Quality Assurance',
-      description: 'We conduct thorough inspections to ensure everything meets our high standards.',
-      details: 'We conduct thorough inspections and quality checks to ensure everything meets our high standards. Any final adjustments are made to guarantee your complete satisfaction.'
+      description: 'We ensure every aspect meets our high standards.',
+      details: 'We perform rigorous inspections to confirm your home project meets Rivera Pro’s excellence standards, making adjustments as needed.'
     },
     {
       step: 6,
       title: 'Project Completion',
-      description: 'We deliver the finished project and walk you through to ensure your complete satisfaction.',
-      details: 'We walk you through the finished project, ensuring every detail is perfect. We provide all necessary documentation and warranties, and we’re here for any follow-up support you might need.'
+      description: 'We deliver your finished home and ensure your satisfaction.',
+      details: 'We guide you through the completed project, providing warranties and support for your newly enhanced home.'
     }
   ];
 
   return (
     <PageTransition>
       <Helmet>
-        <title>Our Services | Elite Craft Co.</title>
-        <meta name="description" content="Discover our expert services in construction, design, woodworking, flooring, and plumbing. We bring your vision to life with skill and style!" />
+        <title>Our Services | Rivera Pro</title>
+        <meta
+          name="description"
+          content="Discover Rivera Pro’s expert services in residential remodeling, new construction, and home enhancements in Atlanta."
+        />
       </Helmet>
 
       <ParallaxHero
-        title="Our Craft, Your Vision"
-        subtitle="From woodworking wonders to plumbing perfection, we build it all with flair."
-        backgroundImage="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80"
+        title="Our Expertise, Your Home"
+        subtitle="Delivering top-tier residential remodeling, new construction, and improvements."
+        backgroundImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
       />
 
       <ToolBeltHeader />
@@ -147,8 +153,8 @@ const ServicesPage: React.FC = () => {
       <section className="section bg-gradient-to-b from-gray-50 to-white">
         <div className="container-custom">
           <SectionHeading
-            title="What We Bring to the Table"
-            subtitle="End-to-end solutions with a passion for craftsmanship—especially in woodworking, flooring, and plumbing!"
+            title="What We Offer Your Home"
+            subtitle="Premium residential remodeling and construction services designed for you."
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-12">
@@ -174,7 +180,7 @@ const ServicesPage: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="text-4xl font-bold text-center text-primary-700 mb-12"
             >
-              Our Signature Craft
+              Our Signature Services
             </motion.h2>
             {services.slice(6).map((service, index) => (
               <EnhancedServiceSection
@@ -202,8 +208,8 @@ const ServicesPage: React.FC = () => {
         />
         <div className="container-custom relative z-10">
           <SectionHeading
-            title="How We Build Your Dreams"
-            subtitle="A step-by-step process that’s as solid as our woodworking!"
+            title="How We Enhance Your Home"
+            subtitle="A streamlined process for your remodeling or construction journey."
             centered
           />
           <div className="relative max-w-4xl mx-auto">

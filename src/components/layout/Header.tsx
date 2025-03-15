@@ -63,10 +63,11 @@ const Header: React.FC = () => {
         {/* Logo */}
         <Link
           to="/"
-          className="flex items-center gap-2 text-primary-600 font-display font-bold text-xl"
+          className={`flex items-center gap-2 font-display font-bold text-xl ${isScrolled ? 'text-black' : 'text-white'}`}
+          aria-label="Go to Rivera Pro homepage"
         >
-          <Home className="h-6 w-6" />
-          <span>Elite Contractor</span>
+          <Home className={`h-6 w-6 ${isScrolled ? 'text-black' : 'text-white'}`} />
+          <span>Rivera Pro</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -77,10 +78,11 @@ const Header: React.FC = () => {
               to={item.path}
               className={({ isActive }) =>
                 `text-base font-semibold transition-colors ${
-                  isActive ? 'text-primary-600' : isScrolled ? 'text-primary-600 hover:text-orange-500' : 'text-white hover:text-orange-500'
+                  isActive ? 'text-primary-600' : isScrolled ? 'text-primary-600 hover:text-primary-500' : 'text-white hover:text-primary-500'
                 }`
               }
               end={item.path === '/'}
+              aria-label={`Navigate to ${item.name}`}
             >
               {item.name}
             </NavLink>
@@ -92,7 +94,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-secondary-700 hover:text-primary-600 transition-colors"
+          className={`md:hidden ${isScrolled ? 'text-black hover:text-primary-500' : 'text-white hover:text-primary-500'} transition-colors`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >
@@ -116,12 +118,13 @@ const Header: React.FC = () => {
                       key={item.path}
                       to={item.path}
                       className={({ isActive }) =>
-                        `text-lg font-semibold transition-colors hover:text-primary-600 ${
+                        `text-lg font-semibold transition-colors hover:text-primary-500 ${
                           isActive ? 'text-primary-600' : 'text-secondary-700'
                         }`
                       }
                       onClick={() => setIsMenuOpen(false)}
                       end={item.path === '/'}
+                      aria-label={`Navigate to ${item.name}`}
                     >
                       {item.name}
                     </NavLink>
@@ -130,6 +133,7 @@ const Header: React.FC = () => {
                     to="/quote"
                     className="btn-primary w-full text-center mt-4 text-white"
                     onClick={() => setIsMenuOpen(false)}
+                    aria-label="Get a quote for your remodeling project"
                   >
                     Get a Quote
                   </Link>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, Building2, Hammer, PaintBucket, Palette, Users } from 'lucide-react';
+import { Home, Hammer, PaintRoller, DoorClosed, Layers } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import ServiceCard from '../ui/ServiceCard';
 
@@ -8,33 +8,33 @@ const Services: React.FC = () => {
   const services = [
     {
       icon: Home,
-      title: 'Residential Construction',
-      description: 'Custom home building with premium materials and expert craftsmanship for your dream living space.'
-    },
-    {
-      icon: Building2,
-      title: 'Commercial Construction',
-      description: 'Efficient and high-quality commercial building solutions tailored to your business needs.'
+      title: 'New Construction',
+      description: 'Build your dream home from the ground up with our expert new construction services, delivering quality and precision.'
     },
     {
       icon: Hammer,
-      title: 'Renovation',
-      description: 'Transform your existing space with our comprehensive renovation and remodeling services.'
+      title: 'Remodeling',
+      description: 'Transform your home with our comprehensive remodeling services, specializing in kitchens, bathrooms, basements, and more.'
     },
     {
-      icon: Palette,
-      title: 'Interior Design',
-      description: 'Thoughtful interior design that balances aesthetics, functionality, and your personal style.'
+      icon: Layers,
+      title: 'Additions',
+      description: 'Expand your living space with custom additions, seamlessly integrated into your existing home with top-notch craftsmanship.'
     },
     {
-      icon: PaintBucket,
-      title: 'Exterior Design',
-      description: 'Create stunning curb appeal with our expert exterior design and landscaping services.'
+      icon: PaintRoller,
+      title: 'Painting & Finishing',
+      description: 'Enhance your home’s look with professional painting, sheetrock, and finishing services for a flawless result.'
     },
     {
-      icon: Users,
-      title: 'Consultation',
-      description: 'Professional guidance and planning to help you make informed decisions about your project.'
+      icon: DoorClosed,
+      title: 'Windows & Siding',
+      description: 'Upgrade your home’s exterior with energy-efficient windows and durable siding, installed with precision.'
+    },
+    {
+      icon: Hammer,
+      title: 'Carpentry & Framing',
+      description: 'Expert carpentry and framing services to ensure your home’s structure is solid and beautifully crafted.'
     }
   ];
 
@@ -43,7 +43,7 @@ const Services: React.FC = () => {
       <div className="container-custom">
         <SectionHeading
           title="Our Services"
-          subtitle="We offer a comprehensive range of construction and design services to bring your vision to life."
+          subtitle="Rivera Pro specializes in residential remodeling, new construction, and additions, delivering exceptional quality in every project."
           centered
         />
         
