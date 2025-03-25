@@ -7,74 +7,44 @@ import ProjectCard from '../components/ui/ProjectCard';
 import CTA from '../components/home/CTA';
 
 const ProjectsPage: React.FC = () => {
-  // Project categories
+  // Project categories - updated to include Renovation
   const categories = [
     'All',
     'New Construction',
     'Remodeling',
     'Roofing',
     'Windows & Siding',
-    'Additions'
+    'Renovation' // Added new category
   ];
   
   // State for active category filter
   const [activeCategory, setActiveCategory] = useState('All');
   
-  // Projects data
+  // Projects data - 4 projects with updated Project 4
   const projects = [
     {
       id: '1',
       title: 'Modern Family Home',
       category: 'New Construction',
-      imageUrl: 'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80' // Modern house under construction
+      imageUrl: 'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80'
     },
     {
       id: '2',
       title: 'Luxury Kitchen Remodel',
       category: 'Remodeling',
-      imageUrl: 'https://images.unsplash.com/photo-1616594168015-7e4c3b9da2e7?auto=format&fit=crop&w=1170&q=80' // Remodeled kitchen
+      imageUrl: 'https://images.unsplash.com/photo-1616594168015-7e4c3b9da2e7?auto=format&fit=crop&w=1170&q=80'
     },
     {
       id: '3',
       title: 'Roof Replacement Project',
       category: 'Roofing',
-      imageUrl: 'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80' // Roofing work
+      imageUrl: 'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80'
     },
     {
       id: '4',
-      title: 'Energy-Efficient Windows Upgrade',
-      category: 'Windows & Siding',
-      imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80' // Exterior with new windows
-    },
-    {
-      id: '5',
-      title: 'Spacious Home Addition',
-      category: 'Additions',
-      imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1170&q=80' // Home addition
-    },
-    {
-      id: '6',
-      title: 'Contemporary Bathroom Renovation',
-      category: 'Remodeling',
-      imageUrl: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=687&q=80' // Bathroom remodel
-    },
-    {
-      id: '7',
-      title: 'Suburban Home Build',
-      category: 'New Construction',
-      imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80' // New suburban home
-    },
-    {
-      id: '8',
-      title: 'Exterior Siding Refresh',
-      category: 'Windows & Siding',
-      imageUrl: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1170&q=80' // Exterior with new siding
-    },
-    {
-      id: '9',
-      title: 'Roof and Attic Renovation',
-      category: 'Roofing',
-      imageUrl: 'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80' // Roofing project
+      title: 'Complete Home Renovation with Custom Wine Cellar',
+      category: 'Renovation',
+      imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80' // Placeholder; ideally, use a wine cellar image
     }
   ];
   
@@ -89,7 +59,7 @@ const ProjectsPage: React.FC = () => {
         <title>Our Projects | Rivera Pro</title>
         <meta
           name="description"
-          content="Explore Rivera Pro's portfolio of residential remodeling, new construction, and home improvement projects in Atlanta, showcasing our exceptional craftsmanship."
+          content="Explore Rivera Pro's portfolio of residential remodeling, new construction, and home improvement projects in Atlanta."
         />
       </Helmet>
       
@@ -99,7 +69,7 @@ const ProjectsPage: React.FC = () => {
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Projects</h1>
             <p className="text-xl text-secondary-200">
-              Discover Rivera Pro’s portfolio of residential remodeling, new construction, and home improvement projects in Atlanta.
+              Check out some of our recent work in residential remodeling, construction, and home improvements around Atlanta.
             </p>
           </div>
         </div>
@@ -109,8 +79,8 @@ const ProjectsPage: React.FC = () => {
       <section className="section">
         <div className="container-custom">
           <SectionHeading
-            title="Featured Projects"
-            subtitle="Browse our collection of completed residential projects showcasing our expertise in remodeling and construction."
+            title="Featured Work"
+            subtitle="A showcase of our craftsmanship in Atlanta-area homes."
           />
           
           {/* Category Filter */}
@@ -132,7 +102,7 @@ const ProjectsPage: React.FC = () => {
           
           {/* Projects Grid */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
             layout
           >
             {filteredProjects.map((project, index) => (
@@ -142,18 +112,11 @@ const ProjectsPage: React.FC = () => {
                 title={project.title}
                 category={project.category}
                 imageUrl={project.imageUrl}
-                altText={`${project.title} - ${project.category} project by Rivera Pro`} // Added altText
+                altText={`${project.title} - ${project.category} project by Rivera Pro`}
                 delay={index}
               />
             ))}
           </motion.div>
-          
-          {/* Empty State */}
-          {filteredProjects.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-secondary-600 text-lg">No projects found in this category.</p>
-            </div>
-          )}
         </div>
       </section>
       

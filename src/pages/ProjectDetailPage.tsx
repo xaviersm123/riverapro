@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, User, MapPin, CheckCircle } from 'lucide-react';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css'; // Import the lightbox styles
 import PageTransition from '../components/ui/PageTransition';
 import CTA from '../components/home/CTA';
-import BeforeAfterSlider from '../components/ui/BeforeAfterSlider';
 
-// Mock project data - in a real app, this would come from an API or database
+// Mock project data - reduced to 4 projects
 interface Project {
   id: string;
   title: string;
@@ -47,20 +48,20 @@ const projectsData: Project[] = [
       'Smart home technology'
     ],
     images: [
-      'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80', // Main image: Modern house under construction
-      'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1169&q=80', // Interior
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1170&q=80', // Exterior detail
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1074&q=80' // Outdoor space
+      'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80',
+      'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1169&q=80',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1170&q=80',
+      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1074&q=80'
     ],
     beforeAfterImages: [
       {
-        before: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1170&q=80', // Empty lot
-        after: 'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80', // Completed house
+        before: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1170&q=80',
+        after: 'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80',
         description: 'Transformed an empty lot into a modern family home with sustainable features.'
       },
       {
-        before: 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?auto=format&fit=crop&w=1170&q=80', // Old interior
-        after: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1169&q=80', // New interior
+        before: 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?auto=format&fit=crop&w=1170&q=80',
+        after: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1169&q=80',
         description: 'Created an open-concept living area with custom hardwood flooring.'
       }
     ]
@@ -84,15 +85,22 @@ const projectsData: Project[] = [
       'Restored original hardwood floors'
     ],
     images: [
-      'https://images.unsplash.com/photo-1616594168015-7e4c3b9da2e7?auto=format&fit=crop&w=1170&q=80', // Main image: Remodeled kitchen
-      'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80', // Kitchen detail
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1170&q=80', // Island view
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1074&q=80' // Dining area
+      '/project1/image12.jpg',  // Finished roof
+      '/project1/image13.jpg',  // Interior framing (before)
+      '/project1/image14.jpg',  // Interior framing (before)
+      '/project1/image15.jpg',  // Interior framing (before)
+      '/project1/image16.jpg',  // Interior framing (before)
+      '/project1/image17.jpg',  // Interior framing (before)
+      '/project1/image18.jpg',  // Interior framing (before)
+      '/project1/image19.jpg',  // Interior framing (before)
+      '/project1/image20.jpg',  // Modern bathroom with glass shower
+      '/project1/image21.jpg',  // Custom wine cellar
+      '/project1/image22.jpg'   // Custom wine cellar (different angle)
     ],
     beforeAfterImages: [
       {
-        before: 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?auto=format&fit=crop&w=1170&q=80', // Old kitchen
-        after: 'https://images.unsplash.com/photo-1616594168015-7e4c3b9da2e7?auto=format&fit=crop&w=1170&q=80', // New kitchen
+        before: 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?auto=format&fit=crop&w=1170&q=80',
+        after: 'https://images.unsplash.com/photo-1616594168015-7e4c3b9da2e7?auto=format&fit=crop&w=1170&q=80',
         description: 'Transformed an outdated kitchen into a modern, functional space with custom cabinetry.'
       }
     ]
@@ -115,203 +123,60 @@ const projectsData: Project[] = [
       'Energy-efficient design'
     ],
     images: [
-      'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80', // Main image: Roofing work
-      'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80', // Roof detail
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1170&q=80', // Exterior view
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1074&q=80' // Attic view
+      'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80',
+      'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1170&q=80',
+      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1074&q=80'
     ],
     beforeAfterImages: [
       {
-        before: 'https://images.unsplash.com/photo-1533779283484-8ad4940aa3a8?auto=format&fit=crop&w=1170&q=80', // Damaged roof
-        after: 'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80', // New roof
+        before: 'https://images.unsplash.com/photo-1533779283484-8ad4940aa3a8?auto=format&fit=crop&w=1170&q=80',
+        after: 'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80',
         description: 'Replaced a storm-damaged roof with durable shingles and improved ventilation.'
       }
     ]
   },
   {
     id: '4',
-    title: 'Energy-Efficient Windows Upgrade',
-    category: 'Windows & Siding',
+    title: 'Complete Home Renovation with Custom Wine Cellar',
+    category: 'Renovation',
     client: 'Brown Family',
     location: 'Buckhead, Atlanta',
     completionDate: 'August 2022',
-    description: 'A full window replacement project for a 2,800 square foot home, installing energy-efficient double-pane windows and updating the exterior siding with durable fiber cement. The project improved the home’s energy efficiency and curb appeal.',
-    challenge: 'The original windows were single-pane and leaking, causing high energy bills, and the siding was outdated and weather-damaged.',
-    solution: 'We installed energy-efficient double-pane windows to reduce energy loss, replaced the siding with low-maintenance fiber cement, and added modern trim to enhance the home’s appearance.',
+    description: 'A comprehensive renovation of a 2,800 square foot home in Buckhead, transforming an outdated property into a modern living space. The project included a full roof replacement, interior framing, a luxurious bathroom upgrade with a glass shower, and a custom wine cellar with unique decor, creating a perfect blend of functionality and elegance.',
+    challenge: 'The challenge was to modernize an older home while preserving its structural integrity, addressing issues like an outdated roof, inefficient layout, and lack of modern amenities, all within a tight timeline.',
+    solution: 'We replaced the roof with durable asphalt shingles, restructured the interior layout with new framing, installed a modern glass shower in the bathroom, and designed a custom wine cellar with reclaimed wood and cork accents, adding both style and functionality to the home.',
     features: [
-      'Energy-efficient double-pane windows',
-      'Fiber cement siding',
-      'Modern trim and accents',
-      'Improved insulation around windows',
-      'Enhanced curb appeal'
+      'New asphalt shingle roof',
+      'Modern glass shower with marble tiles',
+      'Custom wine cellar with LED lighting',
+      'Reclaimed wood wall accents',
+      'Updated interior framing for open layout',
+      'Energy-efficient upgrades throughout'
     ],
     images: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80', // Main image: Exterior with new windows
-      'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1169&q=80', // Window detail
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1170&q=80', // Siding view
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1074&q=80' // Exterior detail
+      '/project1/image8.jpeg',  // Finished roof
+      '/project1/image2.jpg',   // Interior framing (before)
+      '/project1/image3.jpg',   // Interior framing (before)
+      '/project1/image4.jpg',   // Interior framing (before)
+      '/project1/image5.jpg',   // Interior framing (before)
+      '/project1/image6.jpeg',  // Interior framing (before)
+      '/project1/image7.jpeg',  // Interior framing (before)
+      '/project1/image1.jpg',   // Interior framing (before)
+      '/project1/image9.jpeg',  // Modern bathroom with glass shower
+      '/project1/image10.jpg',  // Custom wine cellar
+      '/project1/image11.jpeg'  // Custom wine cellar (different angle)
     ],
     beforeAfterImages: [
       {
-        before: 'https://images.unsplash.com/photo-1533779283484-8ad4940aa3a8?auto=format&fit=crop&w=1170&q=80', // Old exterior
-        after: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80', // New exterior
-        description: 'Upgraded windows and siding for improved energy efficiency and modern aesthetics.'
-      }
-    ]
-  },
-  {
-    id: '5',
-    title: 'Spacious Home Addition',
-    category: 'Additions',
-    client: 'Martinez Family',
-    location: 'Midtown, Atlanta',
-    completionDate: 'May 2022',
-    description: 'A 1,000 square foot home addition to a Midtown residence, adding a new family room, guest bedroom, and bathroom. The project seamlessly integrated with the existing structure while enhancing the home’s functionality.',
-    challenge: 'The challenge was to match the addition to the existing 1950s architecture while ensuring modern functionality and energy efficiency.',
-    solution: 'We used materials and design elements that complemented the original structure, added modern insulation and windows for energy efficiency, and created a seamless transition between the old and new spaces.',
-    features: [
-      'New family room with large windows',
-      'Additional guest bedroom and bathroom',
-      'Matching architectural style',
-      'Energy-efficient insulation',
-      'Seamless integration with existing home'
-    ],
-    images: [
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1170&q=80', // Main image: Home addition
-      'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1169&q=80', // Interior of addition
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1170&q=80', // Exterior detail
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1074&q=80' // Family room
-    ],
-    beforeAfterImages: [
+        before: '/project1/image2.jpg',   // Interior framing (before)
+        after: '/project1/image10.jpg',   // Custom wine cellar (after)
+        description: 'Transformed an unfinished space into a luxurious wine cellar with custom decor.'
+      },
       {
-        before: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1170&q=80', // Original home
-        after: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1170&q=80', // Home with addition
-        description: 'Added a 1,000 sq ft addition with a family room and guest suite.'
-      }
-    ]
-  },
-  {
-    id: '6',
-    title: 'Contemporary Bathroom Renovation',
-    category: 'Remodeling',
-    client: 'Lee Family',
-    location: 'Sandy Springs, Atlanta',
-    completionDate: 'January 2023',
-    description: 'A complete renovation of a 200 square foot bathroom, transforming an outdated space into a modern, spa-like retreat with a walk-in shower, freestanding tub, and custom vanity.',
-    challenge: 'The small space required creative design solutions to maximize functionality while maintaining a luxurious feel, and the original plumbing needed significant updates.',
-    solution: 'We reconfigured the layout to include a spacious walk-in shower, installed modern plumbing fixtures, and used light colors and mirrors to enhance the sense of space.',
-    features: [
-      'Walk-in shower with glass enclosure',
-      'Freestanding soaking tub',
-      'Custom vanity with dual sinks',
-      'Heated tile flooring',
-      'LED lighting and mirrors'
-    ],
-    images: [
-      'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=687&q=80', // Main image: Bathroom remodel
-      'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80', // Shower detail
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1170&q=80', // Vanity view
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1074&q=80' // Tub detail
-    ],
-    beforeAfterImages: [
-      {
-        before: 'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=1170&q=80', // Old bathroom
-        after: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=687&q=80', // New bathroom
-        description: 'Transformed an outdated bathroom into a modern spa-like retreat.'
-      }
-    ]
-  },
-  {
-    id: '7',
-    title: 'Suburban Home Build',
-    category: 'New Construction',
-    client: 'Garcia Family',
-    location: 'Buckhead, Atlanta',
-    completionDate: 'October 2022',
-    description: 'A 3,500 square foot suburban home built in Buckhead, featuring a modern farmhouse design with open living spaces, a gourmet kitchen, and a large backyard. The project focused on family-friendly functionality and energy efficiency.',
-    challenge: 'The client needed a family-friendly design with ample outdoor space, and the site had zoning restrictions that limited the footprint.',
-    solution: 'We designed a multi-level layout to maximize space within zoning limits, created a large backyard with a deck, and incorporated energy-efficient features like double-pane windows and high-performance insulation.',
-    features: [
-      'Modern farmhouse design',
-      'Gourmet kitchen with large island',
-      'Open living and dining areas',
-      'Double-pane energy-efficient windows',
-      'Large backyard with deck',
-      'High-performance insulation'
-    ],
-    images: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80', // Main image: New suburban home
-      'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1169&q=80', // Kitchen
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1170&q=80', // Exterior
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1074&q=80' // Backyard
-    ],
-    beforeAfterImages: [
-      {
-        before: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1170&q=80', // Empty lot
-        after: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80', // Completed home
-        description: 'Built a modern farmhouse-style home on an empty lot with family-friendly features.'
-      }
-    ]
-  },
-  {
-    id: '8',
-    title: 'Exterior Siding Refresh',
-    category: 'Windows & Siding',
-    client: 'Smith Family',
-    location: 'Midtown, Atlanta',
-    completionDate: 'July 2022',
-    description: 'A full exterior siding refresh for a 2,500 square foot home, replacing old wood siding with durable fiber cement siding and updating the trim for a modern look. The project also included new energy-efficient windows.',
-    challenge: 'The old siding was deteriorating and causing water damage, and the client wanted a modern aesthetic while maintaining the home’s character.',
-    solution: 'We replaced the siding with fiber cement for durability, added modern trim in a contrasting color, and installed energy-efficient windows to improve insulation and reduce maintenance.',
-    features: [
-      'Durable fiber cement siding',
-      'Modern contrasting trim',
-      'Energy-efficient windows',
-      'Improved weather resistance',
-      'Low-maintenance materials'
-    ],
-    images: [
-      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1170&q=80', // Main image: Exterior with new siding
-      'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1169&q=80', // Siding detail
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1170&q=80', // Window detail
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1074&q=80' // Full exterior
-    ],
-    beforeAfterImages: [
-      {
-        before: 'https://images.unsplash.com/photo-1533779283484-8ad4940aa3a8?auto=format&fit=crop&w=1170&q=80', // Old exterior
-        after: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1170&q=80', // New exterior
-        description: 'Refreshed the exterior with new siding and windows for a modern, durable look.'
-      }
-    ]
-  },
-  {
-    id: '9',
-    title: 'Roof and Attic Renovation',
-    category: 'Roofing',
-    client: 'Harris Family',
-    location: 'Sandy Springs, Atlanta',
-    completionDate: 'April 2023',
-    description: 'A comprehensive roof and attic renovation for a 3,000 square foot home, replacing the roof with asphalt shingles, adding new insulation, and converting the attic into a usable living space with proper ventilation.',
-    challenge: 'The existing roof was leaking, and the attic lacked proper insulation and ventilation, making it unusable as a living space.',
-    solution: 'We replaced the roof with high-quality asphalt shingles, installed new insulation and ventilation systems, and converted the attic into a functional living space with skylights for natural light.',
-    features: [
-      'Asphalt shingle roof replacement',
-      'New attic insulation',
-      'Improved ventilation system',
-      'Converted attic into living space',
-      'Skylights for natural light'
-    ],
-    images: [
-      'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80', // Main image: Roofing project
-      'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1169&q=80', // Attic interior
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1170&q=80', // Roof detail
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1074&q=80' // Skylight view
-    ],
-    beforeAfterImages: [
-      {
-        before: 'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=1170&q=80', // Old attic
-        after: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1169&q=80', // New attic
-        description: 'Converted an unusable attic into a functional living space with new roofing and insulation.'
+        before: '/project1/image3.jpg',   // Interior framing (before)
+        after: '/project1/image9.jpeg',   // Modern bathroom (after)
+        description: 'Converted a dated bathroom into a modern oasis with a glass shower and marble tiles.'
       }
     ]
   }
@@ -320,7 +185,11 @@ const projectsData: Project[] = [
 const ProjectDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const project = projectsData.find(p => p.id === id);
-  
+
+  // State for lightbox
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -335,6 +204,12 @@ const ProjectDetailPage: React.FC = () => {
     );
   }
 
+  // Prepare slides for the lightbox
+  const slides = project.images.map((image) => ({
+    src: image,
+    alt: `${project.title} - Image ${project.images.indexOf(image) + 1}`
+  }));
+
   return (
     <PageTransition>
       <Helmet>
@@ -344,7 +219,7 @@ const ProjectDetailPage: React.FC = () => {
           content={`View details of our ${project.title} project - ${project.description.substring(0, 150)}...`}
         />
       </Helmet>
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-secondary-900 text-white">
         <div className="container-custom">
@@ -352,12 +227,12 @@ const ProjectDetailPage: React.FC = () => {
             <ArrowLeft className="h-4 w-4 mr-2" />
             <span>Back to Projects</span>
           </Link>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{project.title}</h1>
           <p className="text-xl text-secondary-200 mb-8 max-w-3xl">
             {project.description.split('.')[0]}.
           </p>
-          
+
           <div className="flex flex-wrap gap-6">
             <div className="flex items-center text-secondary-300">
               <Calendar className="h-5 w-5 mr-2 text-primary-400" />
@@ -374,47 +249,79 @@ const ProjectDetailPage: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Main Image Gallery */}
       <section className="py-12">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-8">
+            {/* Main Image */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="md:col-span-2"
             >
-              <div className="rounded-lg overflow-hidden">
-                <img 
-                  src={project.images[0]} 
-                  alt={`${project.title} main image`} 
-                  className="w-full h-full object-cover"
+              <div
+                className="rounded-lg overflow-hidden cursor-pointer bg-gray-100"
+                onClick={() => {
+                  setLightboxIndex(0);
+                  setLightboxOpen(true);
+                }}
+                role="button"
+                aria-label={`View ${project.title} - Main Image in lightbox`}
+              >
+                <img
+                  src={project.images[0]}
+                  alt={`${project.title} main image`}
+                  className="w-full max-h-[700px] object-contain"
+                  loading="lazy"
                 />
               </div>
             </motion.div>
-            
-            {project.images.slice(1).map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
-                className="rounded-lg overflow-hidden"
-              >
-                <img 
-                  src={image} 
-                  alt={`${project.title} - view ${index + 2}`} 
-                  className="w-full h-64 object-cover"
-                />
-              </motion.div>
-            ))}
+
+            {/* Gallery Images with Masonry Layout */}
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-6">
+              {project.images.slice(1).map((image, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+                  className="rounded-lg overflow-hidden mb-6 break-inside-avoid cursor-pointer"
+                  onClick={() => {
+                    setLightboxIndex(index + 1);
+                    setLightboxOpen(true);
+                  }}
+                  role="button"
+                  aria-label={`View ${project.title} - Image ${index + 2} in lightbox`}
+                >
+                  <img
+                    src={image}
+                    alt={`${project.title} - view ${index + 2}`}
+                    className="w-full object-cover transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
+
+        {/* Lightbox */}
+        {lightboxOpen && (
+          <Lightbox
+            open={lightboxOpen}
+            close={() => setLightboxOpen(false)}
+            slides={slides}
+            index={lightboxIndex}
+            on={{
+              view: ({ index }: { index: number }) => setLightboxIndex(index)
+            }}
+          />
+        )}
       </section>
-      
+
       {/* Project Details */}
       <section className="section bg-secondary-50">
         <div className="container-custom">
@@ -428,18 +335,18 @@ const ProjectDetailPage: React.FC = () => {
             >
               <h2 className="text-3xl font-bold mb-6">Project Overview</h2>
               <p className="text-secondary-600 mb-8">{project.description}</p>
-              
+
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4">The Challenge</h3>
                 <p className="text-secondary-600">{project.challenge}</p>
               </div>
-              
+
               <div>
                 <h3 className="text-xl font-bold mb-4">Our Solution</h3>
                 <p className="text-secondary-600">{project.solution}</p>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -461,81 +368,7 @@ const ProjectDetailPage: React.FC = () => {
           </div>
         </div>
       </section>
-      
-      {/* Before & After Section */}
-      {project.beforeAfterImages && project.beforeAfterImages.length > 0 && (
-        <section className="section">
-          <div className="container-custom">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-3xl font-bold mb-6">Before & After</h2>
-              <p className="text-secondary-600 mb-8">
-                See the dramatic transformation of this project through our before and after comparisons.
-              </p>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                {project.beforeAfterImages.map((comparison, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex flex-col"
-                  >
-                    <div className="aspect-w-16 aspect-h-9 mb-4">
-                      <BeforeAfterSlider 
-                        beforeImage={comparison.before}
-                        afterImage={comparison.after}
-                      />
-                    </div>
-                    <p className="text-center text-secondary-600">{comparison.description}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      )}
-      
-      {/* Related Projects */}
-      <section className="section bg-secondary-50">
-        <div className="container-custom">
-          <h2 className="text-3xl font-bold mb-8">Similar Projects</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projectsData
-              .filter(p => p.category === project.category && p.id !== project.id)
-              .slice(0, 3)
-              .map((relatedProject, index) => (
-                <motion.div
-                  key={relatedProject.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 * index }}
-                >
-                  <Link to={`/projects/${relatedProject.id}`} className="block group">
-                    <div className="rounded-lg overflow-hidden mb-4">
-                      <img 
-                        src={relatedProject.images[0]} 
-                        alt={`${relatedProject.title} - ${relatedProject.category} project by Rivera Pro`} 
-                        className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    </div>
-                    <h3 className="text-xl font-bold group-hover:text-primary-600 transition-colors">{relatedProject.title}</h3>
-                    <p className="text-secondary-600">{relatedProject.category}</p>
-                  </Link>
-                </motion.div>
-              ))}
-          </div>
-        </div>
-      </section>
-      
+
       <CTA />
     </PageTransition>
   );
