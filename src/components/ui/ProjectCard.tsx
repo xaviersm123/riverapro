@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
+// Define the component props
 interface ProjectCardProps {
   id: string;
   title: string;
@@ -20,6 +21,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   altText = title,
   delay = 0,
 }) => {
+  // Log the incoming props for debugging
+  console.log(`Rendering ProjectCard for ID=${id}, title=${title}`);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -33,17 +37,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         className="block overflow-hidden rounded-lg"
         title={`View details of ${title} project by Rivera Pro`}
       >
-        <div className="relative overflow-hidden">
-          <div className="aspect-w-16 aspect-h-9 w-full">
-            <img
-              src={imageUrl}
-              alt={altText}
-              className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-              width={1170}
-              height={738}
-              loading="lazy"
-            />
-          </div>
+        {/* 
+          We use a fixed height (h-64) and overflow-hidden so very tall images 
+          remain contained. object-cover ensures the image scales to fill 
+          the container, cropping any excess if necessary. 
+        */}
+        <div className="relative h-96 overflow-hidden">
+          <img
+            src={imageUrl}
+            alt={altText}
+            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+            width={1170}
+            height={738}
+            loading="lazy"
+          />
+          {/* 
+            The overlay for text on hover:
+            We position it absolutely, with a gradient background that fades in.
+          */}
           <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
             <div className="text-white">
               <p className="text-sm font-medium text-primary-300 mb-1">{category}</p>

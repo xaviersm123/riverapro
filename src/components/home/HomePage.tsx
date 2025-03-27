@@ -16,16 +16,16 @@ const HomePage: React.FC = () => {
   return (
     <PageTransition>
       <Helmet>
-        <title>Elite Contractor | Premium Construction Services in Atlanta</title>
-        <meta name="description" content="Elite Contractor provides premium construction and renovation services in Atlanta with exceptional craftsmanship and attention to detail." />
+        <title>Rivera Pro | Premium Construction Services in Atlanta</title>
+        <meta name="description" content="Rivera Pro provides premium construction and renovation services in Atlanta with exceptional craftsmanship and attention to detail." />
         <script type="application/ld+json">
           {`
             {
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Elite Contractor",
-              "url": "https://elitecontractor.com",
-              "logo": "https://elitecontractor.com/logo.png",
+              "name": "Rivera Pro",
+              "url": "https://riveraprollc.com",
+              "logo": "https://riveraprollc.com/logo.png",
               "description": "Premium construction and renovation services with exceptional craftsmanship",
               "address": {
                 "@type": "PostalAddress",

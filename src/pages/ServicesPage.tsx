@@ -70,7 +70,7 @@ const ServicesPage: React.FC = () => {
       title: 'Framing & Structural Work',
       description: 'Lay a strong foundation for your home with expert structural services.',
       features: ['Wall framing', 'Structural repairs', 'Custom builds'],
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80',
+      image: 'https://ewimeryzhqirfyalakzi.supabase.co/storage/v1/object/public/project-images//construction-19696_1280.jpg',
       tagline: 'Built to Last!'
     },
     {
@@ -79,7 +79,7 @@ const ServicesPage: React.FC = () => {
       title: 'Hardwood & LVP Flooring',
       description: 'Elevate your home with stunning Hardwood and LVP flooring solutions.',
       features: ['Hardwood installation', 'LVP installation', 'Refinishing', 'Custom designs'],
-      image: 'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80',
+      image: 'https://ewimeryzhqirfyalakzi.supabase.co/storage/v1/object/public/project-images//pexels-kindelmedia-8487769.jpg',
       tagline: 'Timeless Elegance Underfoot!'
     },
     {
@@ -88,7 +88,7 @@ const ServicesPage: React.FC = () => {
       title: 'Custom Carpentry',
       description: 'Add unique wooden elements to your home with expert carpentry.',
       features: ['Custom cabinets', 'Trim work', 'Built-in shelving'],
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80',
+      image: 'https://ewimeryzhqirfyalakzi.supabase.co/storage/v1/object/public/project-images//measures-5446219_1280.jpg',
       tagline: 'Crafted with Precision!'
     }
   ];

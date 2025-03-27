@@ -9,7 +9,7 @@ const NotFoundPage: React.FC = () => {
   return (
     <PageTransition>
       <Helmet>
-        <title>Page Not Found | Elite Contractor</title>
+        <title>Page Not Found | Rivera Pro</title>
         <meta name="description" content="The page you are looking for does not exist." />
       </Helmet>
       

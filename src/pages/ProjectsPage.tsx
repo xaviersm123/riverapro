@@ -1,60 +1,86 @@
-import React, { useState } from 'react';
+// Importing necessary modules and components
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
+import { supabase } from '../supabase'; // Adjust path to your supabase.ts file
 import PageTransition from '../components/ui/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ProjectCard from '../components/ui/ProjectCard';
 import CTA from '../components/home/CTA';
 
+// Define a TypeScript interface for the project data
+interface Project {
+  id: number | string;  // Unique identifier for the project (could be a string depending on your DB)
+  title: string;        // Project title
+  category: string;     // Project category (this will be used for filtering)
+  images: string[];     // Array of image URLs for the project
+}
+
+// Define the ProjectsPage component as a React Functional Component
 const ProjectsPage: React.FC = () => {
-  // Project categories - updated to include Renovation
-  const categories = [
-    'All',
-    'New Construction',
-    'Remodeling',
-    'Roofing',
-    'Windows & Siding',
-    'Renovation' // Added new category
-  ];
-  
-  // State for active category filter
+  // State to keep track of the currently active category filter.
+  // Default is 'All', which means no filtering.
   const [activeCategory, setActiveCategory] = useState('All');
-  
-  // Projects data - 4 projects with updated Project 4
-  const projects = [
-    {
-      id: '1',
-      title: 'Modern Family Home',
-      category: 'New Construction',
-      imageUrl: 'https://images.unsplash.com/photo-1600585154526-990d71b8f766?auto=format&fit=crop&w=1170&q=80'
-    },
-    {
-      id: '2',
-      title: 'Luxury Kitchen Remodel',
-      category: 'Remodeling',
-      imageUrl: 'https://images.unsplash.com/photo-1616594168015-7e4c3b9da2e7?auto=format&fit=crop&w=1170&q=80'
-    },
-    {
-      id: '3',
-      title: 'Roof Replacement Project',
-      category: 'Roofing',
-      imageUrl: 'https://images.unsplash.com/photo-1600585153491-995b341b8a01?auto=format&fit=crop&w=1170&q=80'
-    },
-    {
-      id: '4',
-      title: 'Complete Home Renovation with Custom Wine Cellar',
-      category: 'Renovation',
-      imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1170&q=80' // Placeholder; ideally, use a wine cellar image
-    }
-  ];
-  
-  // Filter projects based on active category
-  const filteredProjects = activeCategory === 'All' 
-    ? projects 
+
+  // State for storing the fetched projects.
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  // State for storing unique categories extracted from the fetched projects.
+  // This will be used to dynamically render filter buttons.
+  const [categories, setCategories] = useState<string[]>([]);
+
+  // useEffect hook to fetch projects from Supabase when the component mounts.
+  useEffect(() => {
+    // Define an asynchronous function to fetch projects from Supabase.
+    const fetchProjects = async () => {
+      console.log('Starting to fetch projects from Supabase...');
+
+      // Query the projects table to get only the fields needed for this page.
+      const { data, error } = await supabase
+        .from('projects')
+        .select('id, title, category, images');
+
+      // If there is an error during the fetch, log it to the console.
+      if (error) {
+        console.error('Error fetching projects:', error);
+      } else {
+        // Log the fetched data for debugging purposes.
+        console.log('Fetched projects data:', data);
+
+        // Update the projects state with the fetched data,
+        // defaulting to an empty array if data is null.
+        setProjects(data || []);
+
+        // Compute the unique categories from the fetched projects.
+        // Using a Set to ensure uniqueness.
+        const uniqueCategories = Array.from(
+          new Set((data || []).map((project: Project) => project.category))
+        );
+        console.log('Unique categories fetched:', uniqueCategories);
+
+        // Set the categories state with an "All" option plus the unique categories.
+        setCategories(['All', ...uniqueCategories]);
+      }
+    };
+
+    // Call the asynchronous fetch function.
+    fetchProjects();
+  }, []); // Empty dependency array ensures this runs only once when the component mounts.
+
+  // Filter projects based on the active category selection.
+  // If "All" is selected, no filtering is applied; otherwise, only projects matching the category are shown.
+  const filteredProjects = activeCategory === 'All'
+    ? projects
     : projects.filter(project => project.category === activeCategory);
 
+  // Debug logs for the current active category and the list of filtered projects.
+  console.log('Current active category:', activeCategory);
+  console.log('Filtered projects:', filteredProjects);
+
+  // Render the component
   return (
     <PageTransition>
+      {/* Helmet component to manage the document head */}
       <Helmet>
         <title>Our Projects | Rivera Pro</title>
         <meta
@@ -75,7 +101,7 @@ const ProjectsPage: React.FC = () => {
         </div>
       </section>
       
-      {/* Projects Gallery */}
+      {/* Projects Gallery Section */}
       <section className="section">
         <div className="container-custom">
           <SectionHeading
@@ -83,12 +109,16 @@ const ProjectsPage: React.FC = () => {
             subtitle="A showcase of our craftsmanship in Atlanta-area homes."
           />
           
-          {/* Category Filter */}
+          {/* Dynamic Category Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             {categories.map((category) => (
               <button
                 key={category}
-                onClick={() => setActiveCategory(category)}
+                onClick={() => {
+                  // Log the category change for debugging.
+                  console.log(`Changing active category to: ${category}`);
+                  setActiveCategory(category);
+                }}
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   activeCategory === category
                     ? 'bg-primary-600 text-white'
@@ -111,15 +141,18 @@ const ProjectsPage: React.FC = () => {
                 id={project.id}
                 title={project.title}
                 category={project.category}
-                imageUrl={project.imageUrl}
+                // Use the first image as the thumbnail for the project.
+                imageUrl={project.images[0]} 
+                // Provide descriptive alternative text for accessibility.
                 altText={`${project.title} - ${project.category} project by Rivera Pro`}
-                delay={index}
+                delay={index} // Delay for animation effect.
               />
             ))}
           </motion.div>
         </div>
       </section>
       
+      {/* Call to Action Section */}
       <CTA />
     </PageTransition>
   );
