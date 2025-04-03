@@ -8,7 +8,7 @@ import MainLayout from './layouts/MainLayout';
 // Pages
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import ServicesPage from './pages/ServicesPage';
+import ServicesPage from './pages/ServicesPage'; // Adjust path
 import ProjectsPage from './pages/ProjectsPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ContactPage from './pages/ContactPage';
