@@ -16,7 +16,7 @@ import QuotePage from './pages/QuotePage';
 import NotFoundPage from './pages/NotFoundPage';
 import AdminPage from './pages/AdminPage';
 import AdminLoginPage from './pages/AdminLoginPage'; // Adjust path
-import ProtectedRoute from './components/ProtectedRoute'; // Adjust path
+import ProtectedRoute from './components/ProtectedRoute'; // Adjust pathddsaa
 
 function App() {
   return (
